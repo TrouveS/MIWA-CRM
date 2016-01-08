@@ -17,13 +17,13 @@ public class Adresse extends Model {
     @Column(nullable = false)
     private String Ville;
     @Column(nullable = false)
-    private Int CodePostal;
+    private int CodePostal;
 
 
     public Adresse() {
     }
 
-    public Adresse(Long rue, String Ville, Int Codepostal) {
+    public Adresse(Long rue, String Ville, int Codepostal) {
         this.rue = rue;
         this.Ville = Ville;
         this.CodePostal = CodePostal;
@@ -44,10 +44,10 @@ public class Adresse extends Model {
         this.rue = rue;
     }
 
-    public Int getCodePostal() {
+    public int getCodePostal() {
         return CodePostal;
     }
-    public void setCodePostal(Int CodePostal) {
+    public void setCodePostal(int CodePostal) {
         this.CodePostal = CodePostal;
     }
 }

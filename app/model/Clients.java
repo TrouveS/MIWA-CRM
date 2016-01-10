@@ -34,11 +34,15 @@ public class Clients extends Model {
     private String typedemande;
     @Column(nullable = false, unique = true)
     private  Long rib;
+    @Column(nullable = false)
+    private String typeincident;
+    @Column(nullable = false)
+
 
     public Clients() {
     }
 
-    public Clients(String nom, String prenom, String email, String date_naissance, Boolean fidelise, String adresse, String magasin, String typologie, String typedemande, Long rib) {
+    public Clients(String nom, String prenom, String email, String date_naissance, Boolean fidelise, String adresse, String magasin, String typologie, String typedemande, Long rib, String typeincident) {
         this.nom = nom;
         this.prenom = prenom;
         this.email = email;
@@ -49,6 +53,7 @@ public class Clients extends Model {
         this.typologie = typologie;
         this.typedemande = typedemande;
         this.rib = rib;
+        this.typeincident = typeincident;
 
     }
 
@@ -136,6 +141,13 @@ public class Clients extends Model {
 
     public void setRib(Long rib) {
         this.rib = rib;
+    }
+
+    public String getTypeincident() {
+        return typeincident;
+    }
+    public void setTypeincident(String typeincident) {
+        this.typeincident = typeincident;
     }
 }
 

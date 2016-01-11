@@ -20,16 +20,16 @@ GET         /MONETARYSYSTEM/INCIDENT        controllers.MonetaryController.getIn
 POST        /BISYSTEM/TICKET-CAISSE         controllers.BisystemController.sendTicketCaisse()
 
 #SITEWEB
-POST        /SITEWEB                        controllers.SiteWebController.sendCreationClient()
-POST        /SITEWEB                        controllers.SiteWebController.sendPromotion()
-GET         /SITEWEB                        controllers.BackofficeController.getTicketCaisse()
-POST        /SITEWEB                        controllers.BackofficeController.sendModificationClient()
+POST        /SITEWEB/CREATION-CLIENT        controllers.SiteWebController.sendCreationClient()
+POST        /SITEWEB/PROMOTION              controllers.SiteWebController.sendPromotion()
+GET         /SITEWEB/TICKET-CAISSE          controllers.BackofficeController.getTicketCaisse()
+POST        /SITEWEB/MODIFICATION-CLIENT    controllers.BackofficeController.sendModificationClient()
 
 #BACKOFFICE
-POST        /BACKOFFICE                     controllers.BackofficeController.sendCreationClient()
-GET         /BACKOFFICE                     controllers.BackofficeController.getTicketCaisse()
-POST        /BACKOFFICE                     controllers.BackofficeController.sendModificationClient()
-POST        /BACKOFFICE                     controllers.SiteWebController.sendPromotion()
+POST        /BACKOFFICE/CREATION-CLIENT     controllers.BackofficeController.sendCreationClient()
+GET         /BACKOFFICE/TICKET-CAISSE       controllers.BackofficeController.getTicketCaisse()
+POST        /BACKOFFICE/MODIFICATION-CLIENT controllers.BackofficeController.sendModificationClient()
+POST        /BACKOFFICE/PROMOTION           controllers.SiteWebController.sendPromotion()
 
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file                       controllers.Assets.at(path="/public", file)

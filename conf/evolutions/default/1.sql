@@ -23,6 +23,7 @@ create table clients (
   id_code_postal            varchar(255) not null,
   magasin                   varchar(255) not null,
   typologie                 varchar(255),
+  credit                    integer,
   typedemande               varchar(255),
   rib                       bigint,
   constraint uq_clients_email unique (email),

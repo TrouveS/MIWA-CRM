@@ -24,7 +24,6 @@ public class Clients extends Model {
     private String sexe;
     @Column(nullable = false)
     private String date_naissance;
-
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long idfidelite;
     @Column(nullable = false)
@@ -38,6 +37,8 @@ public class Clients extends Model {
     @Column(nullable = true)
     private String typologie;
     @Column(nullable = true)
+    private Integer credit;
+    @Column(nullable = true)
     private String typedemande;
     @Column(nullable = true, unique = true)
     private  Long rib;
@@ -45,7 +46,7 @@ public class Clients extends Model {
     public Clients() {
     }
 
-    public Clients(String nom, String prenom, String sexe, String email, String date_naissance, Long idfidelite, String idVille, String idRue, String idCodePostal, String magasin, String typologie, String typedemande, Long rib) {
+    public Clients(String nom, String prenom, String sexe, String email, String date_naissance, Long idfidelite, String idVille, String idRue, String idCodePostal, String magasin, String typologie, Integer credit, String typedemande, Long rib) {
         this.nom = nom;
         this.prenom = prenom;
         this.sexe = sexe;
@@ -57,6 +58,7 @@ public class Clients extends Model {
         this.idCodePostal = idCodePostal;
         this.magasin = magasin;
         this.typologie = typologie;
+        this.credit = credit;
         this.typedemande = typedemande;
         this.rib = rib;
 
@@ -154,12 +156,20 @@ public class Clients extends Model {
         this.typologie = typologie;
     }
 
+    public Integer getCredit() {
+        return credit;
+    }
+    public void setCredit(Integer credit) {
+        this.credit = credit;
+    }
+
     public String getTypedemande() {
         return typedemande;
     }
     public void setTypedemande(String typedemande) {
         this.typedemande = typedemande;
     }
+
     public Long getRib() {
         return rib;
     }

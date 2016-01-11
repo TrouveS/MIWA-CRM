@@ -20,31 +20,41 @@ public class Clients extends Model {
     private String prenom;
     @Column(nullable = false, unique = true)
     public String email;
+    @Column (nullable = false)
+    private String sexe;
     @Column(nullable = false)
     private String date_naissance;
+
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long idfidelite;
     @Column(nullable = false)
-    private Boolean fidelise;
+    private String idRue;
     @Column(nullable = false)
-    private String adresse;
+    private String idVille;
+    @Column(nullable = false)
+    private String idCodePostal;
     @Column(nullable = false)
     private String magasin;
-    @Column(nullable = false)
+    @Column(nullable = true)
     private String typologie;
-    @Column(nullable = false)
+    @Column(nullable = true)
     private String typedemande;
-    @Column(nullable = false, unique = true)
+    @Column(nullable = true, unique = true)
     private  Long rib;
 
     public Clients() {
     }
 
-    public Clients(String nom, String prenom, String email, String date_naissance, Boolean fidelise, String adresse, String magasin, String typologie, String typedemande, Long rib) {
+    public Clients(String nom, String prenom, String sexe, String email, String date_naissance, Long idfidelite, String idVille, String idRue, String idCodePostal, String magasin, String typologie, String typedemande, Long rib) {
         this.nom = nom;
         this.prenom = prenom;
+        this.sexe = sexe;
         this.email = email;
         this.date_naissance = date_naissance;
-        this.fidelise = fidelise;
-        this.adresse = adresse;
+        this.idfidelite = idfidelite;
+        this.idRue = idRue;
+        this.idVille = idVille;
+        this.idCodePostal = idCodePostal;
         this.magasin = magasin;
         this.typologie = typologie;
         this.typedemande = typedemande;
@@ -76,6 +86,10 @@ public class Clients extends Model {
         this.prenom = prenom;
     }
 
+    public String getSexe(){return sexe;}
+
+    public void setSexe(String sexe) {this.sexe = sexe;}
+
     public String getEmail() {
         return email;
     }
@@ -92,20 +106,36 @@ public class Clients extends Model {
         this.date_naissance = date_naissance;
     }
 
-    public boolean getFidelise() {
-        return fidelise;
+    public Long getIdFidelite() {
+        return idfidelite;
     }
 
-    public void setFidelise(Boolean fidelise) {
-        this.fidelise = fidelise;
+    public void setIdFidelite(Long idfidelite) {
+        this.idfidelite = idfidelite;
     }
 
-    public String getAdresse() {
-        return adresse;
+    public String getIdRue() {
+        return idRue;
     }
 
-    public void setAdresse(String adresse) {
-        this.adresse = adresse;
+    public void setIdRue(String idRue) {
+        this.idRue = idRue;
+    }
+
+    public String getIdVille() {
+        return idVille;
+    }
+
+    public void setIdVille(String idVille) {
+        this.idVille = idVille;
+    }
+
+    public String getIdCodePostal() {
+        return idCodePostal;
+    }
+
+    public void setIdCodePostal(String idCodePostal) {
+        this.idCodePostal =idCodePostal;
     }
 
     public String getMagasin() {

@@ -1,7 +1,10 @@
 package controllers.MonetaryController;
 
 import com.fasterxml.jackson.databind.JsonNode;
+import com.mashape.unirest.http.Unirest;
+import com.mashape.unirest.http.exceptions.UnirestException;
 import controllers.utils.Service;
+import controllers.utils.ServiceName;
 import controllers.utils.pojo.SyncMessagePojo.Monetarysystem.CartePojo;
 
 
@@ -25,25 +28,32 @@ public class Rating extends Controller{
         JsonNode json = request().body().asJson();
         CartePojo pojo = Json.fromJson(json, CartePojo.class);
 
-        return ok();
+        return ok(Json.toJson(pojo));
     }
 
 
-    /** Envoie du Rating à la  Monetique**/
-    public static Result sendRating() {
+    /** Envoie du Rating à la  Monetique - Message synchrone**/
+    public static Result sendRating() throws UnirestException {
         Service service = Service.getInstances();
         JsonNode json = request().body().asJson();
         RatingPojo pojo = Json.fromJson(json, RatingPojo.class);
-
+        Unirest.post(service.getServiceHttpURL(ServiceName.MONETARY_SYSTEM) + "/CRM/RATING")
+                .header("Content-type", "application/json")
+                .body(Json.toJson(pojo))
+                .asJson();
         return ok();
     }
 
-    /** Envoie du Risque à la Monetique**/
+    /** Envoie du Risque à la Monetique - Message synchrone **/
 
-    public static Result sendRisk() {
+    public static Result sendRisk() throws UnirestException {
         Service service = Service.getInstances();
         JsonNode json = request().body().asJson();
         RiskPojo pojo = Json.fromJson(json, RiskPojo.class);
+        Unirest.post(service.getServiceHttpURL(ServiceName.MONETARY_SYSTEM) + "/CRM/RISK")
+                .header("Content-type", "application/json")
+                .body(Json.toJson(pojo))
+                .asJson();
 
         return ok();
     }

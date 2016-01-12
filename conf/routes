@@ -12,7 +12,7 @@ GET     /                           controllers.Application.index
 #POST        /MONETARYSYSTEM/RATING          controllers.MonetaryController.sendRating()
 #POST        /MONETARYSYSTEM/RISK            controllers.MonetaryController.sendRisk()
 #GET         /MONETARYSYSTEM/CARTE           controllers.MonetaryController.getCarte()
-#GET         /MONETARYSYSTEM/INCIDENT        controllers.MonetaryController.getIncidentPaiement()
+GET         /MONETARYSYSTEM/INCIDENT        controllers.MonetaryController.getIncidentPaiement()
 
 
 
@@ -20,6 +20,18 @@ GET     /                           controllers.Application.index
 #POST        /BISYSTEM/TICKET-CAISSE       controllers.BisystemController.sendTicketCaisse()
 
 #SITEWEB
+
+#POST        /SITEWEB/CREATION-CLIENT        controllers.SiteWebController.sendCreationClient()
+#POST        /SITEWEB/PROMOTION              controllers.SiteWebController.sendPromotion()
+#GET         /SITEWEB/TICKET-CAISSE          controllers.BackofficeController.getTicketCaisse()
+#POST        /SITEWEB/MODIFICATION-CLIENT    controllers.BackofficeController.sendModificationClient()
+
+#BACKOFFICE
+#POST        /BACKOFFICE/CREATION-CLIENT     controllers.BackofficeController.sendCreationClient()
+#GET         /BACKOFFICE/TICKET-CAISSE       controllers.BackofficeController.getTicketCaisse()
+#POST        /BACKOFFICE/MODIFICATION-CLIENT controllers.BackofficeController.sendModificationClient()
+#POST        /BACKOFFICE/PROMOTION           controllers.SiteWebController.sendPromotion()
+
 #POST        /SITEWEB         controllers.SiteWebController.sendCreationClient()
 #POST        /SITEWEB         controllers.SiteWebController.sendPromotion()
 #GET         /BACKOFFICE      controllers.BackofficeController.getTicketCaisse()
@@ -29,6 +41,7 @@ GET     /                           controllers.Application.index
 #GET         /BACKOFFICE                  controllers.BackofficeController.getTicketCaisse()
 POST        /BACKOFFICE/SENDCLIENTS      controllers.clientManagement.ClientList.sendModificationClient()
 #POST        /BACKOFFICE/PROMOTION       controllers.SiteWebController.sendPromotion()
+
 
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.at(path="/public", file)

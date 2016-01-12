@@ -46,6 +46,27 @@ public class Global extends GlobalSettings {
         } catch (IOException | TimeoutException e) {
             e.printStackTrace();
         }
+        /** Ticket venant du BackOffice **/
+        try {
+            AsyncMessageConsumer backoffice_ticket = new AsyncMessageConsumer("ticket_caisse");
+            Thread clientThread = new Thread(backoffice_ticket);
+            clientThread.start();
+            Logger.info("client message in queue {}", "ticket_caisse");
+
+        } catch (IOException | TimeoutException e) {
+            e.printStackTrace();
+        }
+        /** Ticket venant du ECommerce **/
+        try {
+            AsyncMessageConsumer ecommerce_ticket = new AsyncMessageConsumer("ticket_caisse");
+            Thread clientThread = new Thread(ecommerce_ticket);
+            clientThread.start();
+            Logger.info("client message in queue {}", "CRM_client");
+
+        } catch (IOException | TimeoutException e) {
+            e.printStackTrace();
+        }
+
         /** Incident paiement **/
         try {
             AsyncMessageConsumer client = new AsyncMessageConsumer("INCIDENT_PAIEMENT");

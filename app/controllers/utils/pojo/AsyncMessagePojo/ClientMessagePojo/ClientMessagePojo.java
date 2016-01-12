@@ -2,15 +2,11 @@ package controllers.utils.pojo.AsyncMessagePojo.ClientMessagePojo;
 
 import controllers.clientManagement.ClientList;
 import controllers.utils.pojo.AsyncMessagePojo.AsyncMessagePojo;
-import controllers.utils.sender.AsyncMessageConsumer;
 import controllers.utils.sender.AsyncMessageProducer;
 import model.Clients;
-import org.json.JSONObject;
 import play.Logger;
 
 import java.io.IOException;
-import java.io.Serializable;
-import java.util.List;
 import java.util.concurrent.TimeoutException;
 
 /**

@@ -6,13 +6,15 @@ import com.mashape.unirest.http.Unirest;
 import com.mashape.unirest.http.exceptions.UnirestException;
 import controllers.utils.Service;
 import controllers.utils.ServiceName;
+import controllers.utils.pojo.SyncMessagePojo.RatingPojo;
 import controllers.utils.sender.AsyncMessageConsumer;
 import controllers.utils.sender.AsyncMessageProducer;
 import controllers.utils.sender.SyncMessageSender;
 
 
 import play.Logger;
-import play.api.libs.json.Json;
+import play.libs.Json;
+import play.mvc.Controller;
 import play.mvc.Result;
 
 import java.io.IOException;
@@ -24,29 +26,16 @@ import static play.mvc.Results.ok;
 /**
  * Created by AmdouniNajla on 12/01/2016.
  */
-public class Rating {
+public class Rating extends Controller{
 
     /** Carte de la société venant de la Monetique  - Message synchrone**/
     public static Result getCarte() {
         Service service = Service.getInstances();
-
-        try {
-            //FIXME le chemin n'est pas le bon pour tester
-            HttpResponse<JsonNode> jsonResponse = Unirest.post(service.getServiceHttpURL(ServiceName.MONETARY_SYSTEM) + "/CARTE")
-                    .header("Content-type", "application/json")
-                    .header("accept", "application/json")
-                    .body(Json.toJson())
-                    .asJson();
-
-        } catch (UnirestException e) {
-            e.printStackTrace();
-        }
+        JsonNode json = request().body().asJson();
+        RatingPojo pojo = Json.fromJson(json, RatingPojo.class);
 
         return ok();
     }
-
-
-
 
 
     /** Envoie du Rating à la  Monetique**/

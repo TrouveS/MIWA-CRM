@@ -12,6 +12,10 @@ import controllers.utils.Service;
 import java.io.IOException;
 import java.util.concurrent.TimeoutException;
 
+/**
+ * Created by AmdouniNajla on 12/01/2016.
+ */
+
 public class Global extends GlobalSettings {
 
     @Override
@@ -47,16 +51,7 @@ public class Global extends GlobalSettings {
         } catch (IOException | TimeoutException e) {
             e.printStackTrace();
         }
-        /** Incident paiement **/
-        try {
-            AsyncMessageConsumer client = new AsyncMessageConsumer("INCIDENT_PAIEMENT");
-            Thread clientThread = new Thread(client);
-            clientThread.start();
-            Logger.info("client message in queue {}", "INCIDENT_PAIEMENT");
 
-        } catch (IOException | TimeoutException e) {
-            e.printStackTrace();
-        }
     }
 
     private void saveService() {

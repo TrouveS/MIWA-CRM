@@ -1,5 +1,6 @@
 import com.mashape.unirest.http.exceptions.UnirestException;
 import controllers.utils.pojo.AsyncMessagePojo.ClientMessagePojo.ClientMessagePojo;
+import controllers.utils.pojo.AsyncMessagePojo.TicketPojo.TicketPojo;
 import controllers.utils.pojo.SyncMessagePojo.ClockPojo;
 import controllers.utils.sender.AsyncMessageConsumer;
 import controllers.utils.sender.SyncMessageSender;
@@ -38,7 +39,7 @@ public class Global extends GlobalSettings {
     {
         /** Information nouveau client venant du BackOffice **/
         try {
-            AsyncMessageConsumer crm_client = new AsyncMessageConsumer("CRM_client");
+            AsyncMessageConsumer crm_client = new AsyncMessageConsumer("CRM_client", ClientMessagePojo.class);
             Thread clientThread = new Thread(crm_client);
             clientThread.start();
             Logger.info("client message in queue {}", "CRM_client");
@@ -48,7 +49,7 @@ public class Global extends GlobalSettings {
         }
         /** Ticket venant du BackOffice **/
         try {
-            AsyncMessageConsumer backoffice_ticket = new AsyncMessageConsumer("ticket_caisse");
+            AsyncMessageConsumer backoffice_ticket = new AsyncMessageConsumer("ticket_caisse", TicketPojo.class);
             Thread clientThread = new Thread(backoffice_ticket);
             clientThread.start();
             Logger.info("client message in queue {}", "ticket_caisse");
@@ -58,7 +59,7 @@ public class Global extends GlobalSettings {
         }
         /** Ticket venant du ECommerce **/
         try {
-            AsyncMessageConsumer ecommerce_ticket = new AsyncMessageConsumer("ticket_caisse");
+            AsyncMessageConsumer ecommerce_ticket = new AsyncMessageConsumer("ticket_caisse", TicketPojo.class);
             Thread clientThread = new Thread(ecommerce_ticket);
             clientThread.start();
             Logger.info("client message in queue {}", "CRM_client");
@@ -68,27 +69,16 @@ public class Global extends GlobalSettings {
         }
 
         /** Incident paiement venant de la Monetique**/
-        try {
-            AsyncMessageConsumer incident_paiement = new AsyncMessageConsumer("INCIDENT_PAIEMENT");
-            Thread incidentThread = new Thread(incident_paiement);
-            incidentThread.start();
-            Logger.info("client message in queue {}", "INCIDENT_PAIEMENT");
+//        try {
+//            AsyncMessageConsumer incident_paiement = new AsyncMessageConsumer("INCIDENT_PAIEMENT");
+//            Thread incidentThread = new Thread(incident_paiement);
+//            incidentThread.start();
+//            Logger.info("client message in queue {}", "INCIDENT_PAIEMENT");
+//
+//        } catch (IOException | TimeoutException e) {
+//            e.printStackTrace();
+//        }
 
-        } catch (IOException | TimeoutException e) {
-            e.printStackTrace();
-        }
-
-        /** Carte de la société venant de la Monetique**/
-
-        try {
-            AsyncMessageConsumer carte = new AsyncMessageConsumer("CARTE");
-            Thread carteThread = new Thread(carte);
-            carteThread.start();
-            Logger.info("client message in queue {}", "CARTE");
-
-        } catch (IOException | TimeoutException e) {
-            e.printStackTrace();
-        }
 
     }
 

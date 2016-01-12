@@ -2,10 +2,16 @@ package controllers.utils.pojo.AsyncMessagePojo.ClientMessagePojo;
 
 import controllers.clientManagement.ClientList;
 import controllers.utils.pojo.AsyncMessagePojo.AsyncMessagePojo;
+import controllers.utils.sender.AsyncMessageConsumer;
+import controllers.utils.sender.AsyncMessageProducer;
 import model.Clients;
 import org.json.JSONObject;
+import play.Logger;
+
+import java.io.IOException;
 import java.io.Serializable;
 import java.util.List;
+import java.util.concurrent.TimeoutException;
 
 /**
  * Created by LuxiaMars on 11/01/2016.
@@ -24,32 +30,14 @@ public class ClientMessagePojo extends AsyncMessagePojo{
     private String idRue;
     private String idVille;
     private String idCodePostal;
-    private String magasin;
 
-    public ClientMessagePojo(String nom, String prenom, String email, String sexe, String client_id_local,
-                             String date_de_naissance, String magasin_id, Long idFidelite, String idRue, String idVille,
-                             String idCodePostal, String magasin) {
-        this.nom = nom;
-        this.prenom = prenom;
-        this.email = email;
-        this.sexe = sexe;
-        this.client_id_local = client_id_local;
-        this.date_de_naissance = date_de_naissance;
-        this.magasin_id = magasin_id;
-        this.idFidelite = idFidelite;
-        this.idRue = idRue;
-        this.idVille = idVille;
-        this.idCodePostal = idCodePostal;
-        this.magasin = magasin;
-    }
-
-
+    public ClientMessagePojo(){};
 
     @Override
     public void action()
     {
         Clients newClient = new Clients();
-        JSONObject jsonClient = new JSONObject();
+        ClientMessagePojo client = new ClientMessagePojo();
         ClientList cl = new ClientList();
 
         /** Si le mail est deja connu, ne pas ajouter le client et renvoyer sa fiche**/
@@ -57,25 +45,24 @@ public class ClientMessagePojo extends AsyncMessagePojo{
         String emailClient;
         emailClient = this.email;
 
-        List<Clients> allEmail = Clients.find.where().eq("email", emailClient).findList();
+        Clients email = Clients.find.where().eq("email", emailClient).findUnique();
 
-        if(!allEmail.isEmpty())
+        if(email != null)
         {
-            Clients existingClient = allEmail.get(0);
-            jsonClient.put("nom", existingClient.getNom());
-            jsonClient.put("prenom", existingClient.getPrenom());
-            jsonClient.put("client_id_local", this.client_id_local);
-            jsonClient.put("magasin_id", existingClient.getMagasin());
-            jsonClient.put("idFidelite", existingClient.getIdFidelite());
-            jsonClient.put("date_de_naissance", existingClient.getDate());
-            jsonClient.put("sexe", existingClient.getSexe());
-            jsonClient.put("email", existingClient.getEmail());
-            jsonClient.put("idRue", existingClient.getIdRue());
-            jsonClient.put("idVille", existingClient.getIdVille());
-            jsonClient.put("idCodePostal", existingClient.getIdCodePostal());
+            Clients existingClient = email;
+            client.nom = existingClient.getNom();
+            client.prenom = existingClient.getPrenom();
+            client.client_id_local =  this.client_id_local;
+            client.magasin_id = existingClient.getMagasin();
+            client.date_de_naissance = existingClient.getDate();
+            client.idFidelite =  existingClient.getIdFidelite();
+            client.sexe = existingClient.getSexe();
+            client.email = existingClient.getEmail();
+            client.idRue = existingClient.getIdRue();
+            client.idVille = existingClient.getIdCodePostal();
+            client.idCodePostal = existingClient.getIdCodePostal();
 
             System.out.println("Client existant");
-
             existingClient.save();
             return;
         }
@@ -93,23 +80,31 @@ public class ClientMessagePojo extends AsyncMessagePojo{
         newClient.setIdCodePostal(this.idCodePostal);
 
 
-        /** Creation du JSON a renvoye **/
+        /** Creation du POJO a renvoye **/
 
-        jsonClient.put("nom", newClient.getNom());
-        jsonClient.put("prenom", newClient.getPrenom());
-        jsonClient.put("client_id_local", this.client_id_local);
-        jsonClient.put("magasin_id", newClient.getMagasin());
-        jsonClient.put("idFidelite", newClient.getIdFidelite());
-        jsonClient.put("date_de_naissance", newClient.getDate());
-        jsonClient.put("sexe", newClient.getSexe());
-        jsonClient.put("email", newClient.getEmail());
-        jsonClient.put("idRue", newClient.getIdRue());
-        jsonClient.put("idVille", newClient.getIdVille());
-        jsonClient.put("idCodePostal", newClient.getIdCodePostal());
+        client.nom = newClient.getNom();
+        client.prenom = newClient.getPrenom();
+        client.client_id_local =  this.client_id_local;
+        client.magasin_id = newClient.getMagasin();
+        client.date_de_naissance = newClient.getDate();
+        client.idFidelite =  newClient.getIdFidelite();
+        client.sexe = newClient.getSexe();
+        client.email = newClient.getEmail();
+        client.idRue = newClient.getIdRue();
+        client.idVille = newClient.getIdCodePostal();
+        client.idCodePostal = newClient.getIdCodePostal();
 
         newClient.save();
-        cl.addToClientList(jsonClient);
+        cl.addToClientList(client);
 
+        try {
+            AsyncMessageProducer crm_client_fidelise = new AsyncMessageProducer("CRM_to_BACKOFFICE_client");
+            crm_client_fidelise.sendMessage(client);
+            Logger.info("client message in queue {}", "CRM_to_BACKOFFICE_client");
+
+        } catch (IOException | TimeoutException e) {
+            e.printStackTrace();
+        }
         /** PrettyPrint a enlever **/
 
         System.out.println(newClient.getNom());

@@ -5,6 +5,8 @@ import controllers.utils.Service;
 import controllers.utils.pojo.SyncMessagePojo.Monetarysystem.CartePojo;
 
 
+import controllers.utils.pojo.SyncMessagePojo.Monetarysystem.RatingPojo;
+import controllers.utils.pojo.SyncMessagePojo.Monetarysystem.RiskPojo;
 import play.libs.Json;
 import play.mvc.Controller;
 import play.mvc.Result;
@@ -29,6 +31,9 @@ public class Rating extends Controller{
 
     /** Envoie du Rating à la  Monetique**/
     public static Result sendRating() {
+        Service service = Service.getInstances();
+        JsonNode json = request().body().asJson();
+        RatingPojo pojo = Json.fromJson(json, RatingPojo.class);
 
         return ok();
     }
@@ -36,6 +41,9 @@ public class Rating extends Controller{
     /** Envoie du Risque à la Monetique**/
 
     public static Result sendRisk() {
+        Service service = Service.getInstances();
+        JsonNode json = request().body().asJson();
+        RiskPojo pojo = Json.fromJson(json, RiskPojo.class);
 
         return ok();
     }

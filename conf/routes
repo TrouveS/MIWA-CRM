@@ -12,7 +12,7 @@ GET     /                           controllers.Application.index
 #POST        /MONETARYSYSTEM/RATING          controllers.MonetaryController.sendRating()
 #POST        /MONETARYSYSTEM/RISK            controllers.MonetaryController.sendRisk()
 #GET         /MONETARYSYSTEM/CARTE           controllers.MonetaryController.getCarte()
-GET         /MONETARYSYSTEM/INCIDENT        controllers.MonetaryController.getIncidentPaiement()
+GET         /MONETARYSYSTEM/INCIDENT        controllers.MonetaryController.Rating.getIncidentPaiement()
 
 
 

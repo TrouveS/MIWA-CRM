@@ -1,4 +1,4 @@
-package controllers.Rating;
+package controllers.MonetaryController;
 
 import controllers.utils.sender.AsyncMessageConsumer;
 import play.Logger;

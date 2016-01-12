@@ -1,17 +1,17 @@
-package controllers.utils.pojo.SyncMessagePojo;
+package controllers.utils.pojo.SyncMessagePojo.Monetarysystem;
 
 /**
  * Created by AmdouniNajla on 12/01/2016.
  */
-public class RatingPojo {
+public class CartePojo {
     private Long idfidelite;
     private String Typedemande;
     private Long RIB;
 
-    public RatingPojo() {
+    public CartePojo() {
     }
 
-    public RatingPojo(Long idfidelite, String typedemande, Long RIB) {
+    public CartePojo(Long idfidelite, String typedemande, Long RIB) {
         this.idfidelite = idfidelite;
         Typedemande = typedemande;
         this.RIB = RIB;

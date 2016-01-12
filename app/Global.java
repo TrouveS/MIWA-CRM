@@ -67,16 +67,29 @@ public class Global extends GlobalSettings {
             e.printStackTrace();
         }
 
-        /** Incident paiement **/
+        /** Incident paiement venant de la Monetique**/
         try {
-            AsyncMessageConsumer client = new AsyncMessageConsumer("INCIDENT_PAIEMENT");
-            Thread clientThread = new Thread(client);
-            clientThread.start();
+            AsyncMessageConsumer incident_paiement = new AsyncMessageConsumer("INCIDENT_PAIEMENT");
+            Thread incidentThread = new Thread(incident_paiement);
+            incidentThread.start();
             Logger.info("client message in queue {}", "INCIDENT_PAIEMENT");
 
         } catch (IOException | TimeoutException e) {
             e.printStackTrace();
         }
+
+        /** Carte de la société venant de la Monetique**/
+
+        try {
+            AsyncMessageConsumer carte = new AsyncMessageConsumer("CARTE");
+            Thread carteThread = new Thread(carte);
+            carteThread.start();
+            Logger.info("client message in queue {}", "CARTE");
+
+        } catch (IOException | TimeoutException e) {
+            e.printStackTrace();
+        }
+
     }
 
     private void saveService() {

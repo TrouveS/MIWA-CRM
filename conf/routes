@@ -20,7 +20,6 @@ POST        /MONETARYSYSTEM/RISK            controllers.MonetaryController.Ratin
 #POST        /BISYSTEM/TICKET-CAISSE       controllers.BisystemController.sendTicketCaisse()
 
 #SITEWEB
-
 #POST        /SITEWEB/CREATION-CLIENT        controllers.SiteWebController.sendCreationClient()
 #POST        /SITEWEB/PROMOTION              controllers.SiteWebController.sendPromotion()
 #GET         /SITEWEB/TICKET-CAISSE          controllers.BackofficeController.getTicketCaisse()

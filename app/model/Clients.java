@@ -37,31 +37,15 @@ public class Clients extends Model {
     @Column(nullable = true)
     private String typologie;
     @Column(nullable = true)
-    private Integer credit;
+    private Integer credit; /**Risque de credit**/
     @Column(nullable = true)
     private String typedemande;
     @Column(nullable = true, unique = true)
     private  Long rib;
+    @Column(nullable = true)
+    private Integer rating;
 
     public Clients() {
-    }
-
-    public Clients(String nom, String prenom, String sexe, String email, String date_naissance, Long idfidelite, String idVille, String idRue, String idCodePostal, String magasin, String typologie, Integer credit, String typedemande, Long rib) {
-        this.nom = nom;
-        this.prenom = prenom;
-        this.sexe = sexe;
-        this.email = email;
-        this.date_naissance = date_naissance;
-        this.idfidelite = idfidelite;
-        this.idRue = idRue;
-        this.idVille = idVille;
-        this.idCodePostal = idCodePostal;
-        this.magasin = magasin;
-        this.typologie = typologie;
-        this.credit = credit;
-        this.typedemande = typedemande;
-        this.rib = rib;
-
     }
 
     public Long getUserId() {
@@ -176,6 +160,14 @@ public class Clients extends Model {
 
     public void setRib(Long rib) {
         this.rib = rib;
+    }
+
+    public Integer getRating() {
+        return rating;
+    }
+
+    public void setRating(Integer rating) {
+        this.rating = rating;
     }
 }
 

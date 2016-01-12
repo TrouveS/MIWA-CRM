@@ -2,6 +2,7 @@ package model;
 
 import play.db.ebean.Model;
 
+import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.*;
 /**
@@ -9,7 +10,7 @@ import javax.persistence.*;
  */
 public class Promotion extends Model{
 
-    public static Finder<Long, Promotion> find = new Finder<>(Long.class, Promotion.class);
+    public static Integer[] montantPromotion = new Integer[] {10, 15, 20, 25, 30, 35, 40, 50, 60, 70};
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -18,8 +19,9 @@ public class Promotion extends Model{
     private int Remise;
 
 
-    public Promotion() {
+    public Promotion(){
     }
+
 
     public Promotion(Long clientId, int Remise) {
         this.clientId = clientId;

@@ -1,6 +1,5 @@
 package controllers.utils.pojo.AsyncMessagePojo.TicketPojo;
 
-import controllers.clientManagement.ClientList;
 import controllers.utils.pojo.AsyncMessagePojo.AsyncMessagePojo;
 import controllers.utils.sender.AsyncMessageProducer;
 import model.Article;
@@ -14,7 +13,7 @@ import java.util.concurrent.TimeoutException;
  */
 public class TicketPojo extends AsyncMessagePojo {
 
-    private String client_id;
+    private Long client_id;
     private String ticket_id;
     private String magasin_id;
     private String ticket_date;
@@ -22,7 +21,7 @@ public class TicketPojo extends AsyncMessagePojo {
     private String total;
     private List<Article> article;
 
-    public TicketPojo(){};
+    public TicketPojo(){}
 
     @Override
     public void action()

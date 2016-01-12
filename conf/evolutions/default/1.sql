@@ -3,13 +3,6 @@
 
 # --- !Ups
 
-create table adresse (
-  rue                       bigint not null,
-  ville                     varchar(255) not null,
-  code_postal               integer not null,
-  constraint uq_adresse_rue unique (rue))
-;
-
 create table clients (
   client_id                 bigint not null,
   nom                       varchar(255) not null,
@@ -26,6 +19,7 @@ create table clients (
   credit                    integer,
   typedemande               varchar(255),
   rib                       bigint,
+  rating                    integer,
   constraint uq_clients_email unique (email),
   constraint uq_clients_rib unique (rib),
   constraint pk_clients primary key (client_id))
@@ -49,8 +43,6 @@ create sequence user_seq;
 # --- !Downs
 
 SET REFERENTIAL_INTEGRITY FALSE;
-
-drop table if exists adresse;
 
 drop table if exists clients;
 

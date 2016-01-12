@@ -1,5 +1,6 @@
 package controllers.clientManagement;
 
+import controllers.utils.pojo.AsyncMessagePojo.ClientMessagePojo.ClientListPojo;
 import controllers.utils.pojo.AsyncMessagePojo.ClientMessagePojo.ClientMessagePojo;
 import controllers.utils.sender.AsyncMessageProducer;
 import play.Logger;
@@ -15,7 +16,7 @@ import static play.mvc.Results.ok;
 /**
  * Created by LuxiaMars on 11/01/2016.
  */
-public class ClientList {
+public class ClientList{
 
     private static List<ClientMessagePojo> clientList = new ArrayList<>();
 
@@ -34,10 +35,12 @@ public class ClientList {
         clientList.add(client);
     }
 
+
     public static Result sendModificationClient() {
+        ClientListPojo clientListPojo = new ClientListPojo();
         try {
             AsyncMessageProducer crm_client_list = new AsyncMessageProducer("CRM_to_BACKOFFICE_client");
-            //crm_client_list.sendMessage(clientList);
+            crm_client_list.sendMessage(clientListPojo);
             cleanClientList();
             Logger.info("client message in queue {}", "CRM_to_BACKOFFICE_client");
 

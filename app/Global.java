@@ -1,15 +1,13 @@
 import com.mashape.unirest.http.exceptions.UnirestException;
-import controllers.utils.ServiceName;
+import controllers.utils.Service;
 import controllers.utils.pojo.AsyncMessagePojo.ClientMessagePojo.ClientMessagePojo;
 import controllers.utils.pojo.AsyncMessagePojo.TicketPojo.TicketPojo;
 import controllers.utils.pojo.SyncMessagePojo.ClockPojo;
 import controllers.utils.sender.AsyncMessageConsumer;
 import controllers.utils.sender.SyncMessageSender;
-import org.json.JSONObject;
 import play.Application;
 import play.GlobalSettings;
 import play.Logger;
-import controllers.utils.Service;
 
 import java.io.IOException;
 import java.util.concurrent.TimeoutException;

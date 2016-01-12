@@ -1,4 +1,5 @@
 import com.mashape.unirest.http.exceptions.UnirestException;
+import controllers.utils.ServiceName;
 import controllers.utils.pojo.AsyncMessagePojo.ClientMessagePojo.ClientMessagePojo;
 import controllers.utils.pojo.SyncMessagePojo.ClockPojo;
 import controllers.utils.sender.AsyncMessageConsumer;
@@ -78,17 +79,6 @@ public class Global extends GlobalSettings {
             e.printStackTrace();
         }
 
-        /** Carte de la société venant de la Monetique**/
-
-        try {
-            AsyncMessageConsumer carte = new AsyncMessageConsumer("CARTE");
-            Thread carteThread = new Thread(carte);
-            carteThread.start();
-            Logger.info("client message in queue {}", "CARTE");
-
-        } catch (IOException | TimeoutException e) {
-            e.printStackTrace();
-        }
 
     }
 

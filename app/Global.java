@@ -18,8 +18,6 @@ public class Global extends GlobalSettings {
         //TODO on start action
         subscribeQueue();
         super.onStart(application);
-
-
     }
 
     private void subscribeQueue()

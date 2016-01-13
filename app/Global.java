@@ -1,6 +1,7 @@
 import com.mashape.unirest.http.exceptions.UnirestException;
 import controllers.utils.Service;
 import controllers.utils.pojo.AsyncMessagePojo.ClientMessagePojo.ClientMessagePojo;
+import controllers.utils.pojo.AsyncMessagePojo.Monetarysystem.IncidentPojo;
 import controllers.utils.pojo.AsyncMessagePojo.TicketPojo.TicketPojo;
 import controllers.utils.pojo.SyncMessagePojo.ClockPojo;
 import controllers.utils.sender.AsyncMessageConsumer;
@@ -69,15 +70,15 @@ public class Global extends GlobalSettings {
         }
 
         /** Incident paiement venant de la Monetique**/
-//        try {
-//            AsyncMessageConsumer incident_paiement = new AsyncMessageConsumer("INCIDENT_PAIEMENT");
-//            Thread incidentThread = new Thread(incident_paiement);
-//            incidentThread.start();
-//            Logger.info("client message in queue {}", "INCIDENT_PAIEMENT");
-//
-//        } catch (IOException | TimeoutException e) {
-//            e.printStackTrace();
-//        }
+        try {
+            AsyncMessageConsumer incident_paiement = new AsyncMessageConsumer("INCIDENT_PAIEMENT", IncidentPojo.class);
+            Thread incidentThread = new Thread(incident_paiement);
+            incidentThread.start();
+            Logger.info("client message in queue {}", "INCIDENT_PAIEMENT");
+
+        } catch (IOException | TimeoutException e) {
+            e.printStackTrace();
+       }
 
 
     }

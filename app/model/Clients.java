@@ -44,6 +44,9 @@ public class Clients extends Model {
     private  Long rib;
     @Column(nullable = true)
     private Integer rating;
+    @Column(nullable = true)
+    private Integer nbIncidents;
+
 
     public Clients() {
     }
@@ -168,6 +171,14 @@ public class Clients extends Model {
 
     public void setRating(Integer rating) {
         this.rating = rating;
+    }
+
+    public Integer getNbIncidents() {
+        return nbIncidents;
+    }
+
+    public void setNbIncidents(Integer nbIncidents) {
+        this.nbIncidents = nbIncidents;
     }
 }
 

@@ -26,7 +26,9 @@ public class Rating extends Controller{
     public static Result getCarte() {
         Service service = Service.getInstances();
         JsonNode json = request().body().asJson();
-        CartePojo pojo = Json.fromJson(json, CartePojo.class);
+        CartePojo pojo = new CartePojo();
+        pojo.action();
+        pojo = Json.fromJson(json, CartePojo.class);
 
         return ok(Json.toJson(pojo));
     }
@@ -36,9 +38,11 @@ public class Rating extends Controller{
     public static Result sendRating() throws UnirestException {
         Service service = Service.getInstances();
         JsonNode json = request().body().asJson();
-        RatingPojo pojo = Json.fromJson(json, RatingPojo.class);
+        RatingPojo pojo = new RatingPojo();
+        pojo.action();
+        pojo = Json.fromJson(json, RatingPojo.class);
         Unirest.post(service.getServiceHttpURL(ServiceName.MONETARY_SYSTEM) + "/CRM/RATING")
-                .header("Content-type", "application/json")
+                .header("Content-type", "pplication/json")
                 .body(Json.toJson(pojo))
                 .asJson();
         return ok();
@@ -49,7 +53,9 @@ public class Rating extends Controller{
     public static Result sendRisk() throws UnirestException {
         Service service = Service.getInstances();
         JsonNode json = request().body().asJson();
-        RiskPojo pojo = Json.fromJson(json, RiskPojo.class);
+        RiskPojo pojo =  new RiskPojo();
+        pojo.action();
+        pojo = Json.fromJson(json, RiskPojo.class);
         Unirest.post(service.getServiceHttpURL(ServiceName.MONETARY_SYSTEM) + "/CRM/RISK")
                 .header("Content-type", "application/json")
                 .body(Json.toJson(pojo))

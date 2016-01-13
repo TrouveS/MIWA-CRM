@@ -37,9 +37,9 @@ public class ClientList{
 
 
     public static Result sendModificationClient() {
-        ClientListPojo clientListPojo = new ClientListPojo();
-        try {
-            AsyncMessageProducer crm_client_list = new AsyncMessageProducer("CRM_to_BACKOFFICE_client");
+         ClientListPojo clientListPojo = new ClientListPojo();
+            try {
+                AsyncMessageProducer crm_client_list = new AsyncMessageProducer("CRM_to_BACKOFFICE_client");
             crm_client_list.sendMessage(clientListPojo);
             cleanClientList();
             Logger.info("client message in queue {}", "CRM_to_BACKOFFICE_client");

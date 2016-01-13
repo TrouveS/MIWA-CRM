@@ -1,43 +1,31 @@
 package controllers.utils.pojo.AsyncMessagePojo.Monetarysystem;
 
+import controllers.utils.pojo.AsyncMessagePojo.AsyncMessagePojo;
+import controllers.utils.sender.AsyncMessageConsumer;
+import model.Clients;
+
 /**
  * Created by AmdouniNajla on 12/01/2016.
  */
-public class IncidentPojo {
+public class IncidentPojo extends AsyncMessagePojo {
     private Long idFidelite;
     private int valeur_incident;
     private String erreur;
 
-    public IncidentPojo(Long idFidelite, int valeur_incident, String erreur) {
-        this.idFidelite = idFidelite;
-        this.valeur_incident = valeur_incident;
-        this.erreur = erreur;
-    }
-
     public IncidentPojo() {
     }
 
-    public Long getIdFidelite() {
-        return idFidelite;
-    }
+    public void action(){
+        Clients client;
+        client = Clients.find.where().eq("idFidelite", idFidelite).findUnique();
+        Integer valeur_incident_actuelle = 0;
 
-    public void setIdFidelite(Long idFidelite) {
-        this.idFidelite = idFidelite;
-    }
-
-    public int getValeur_incident() {
-        return valeur_incident;
-    }
-
-    public void setValeur_incident(int valeur_incident) {
-        this.valeur_incident = valeur_incident;
-    }
-
-    public String getErreur() {
-        return erreur;
-    }
-
-    public void setErreur(String erreur) {
-        this.erreur = erreur;
+        if(client != null)
+        {
+            valeur_incident_actuelle = (client.getCredit() * client.getNbIncidents()) + valeur_incident_actuelle;
+            client.setCredit(valeur_incident_actuelle/(client.getNbIncidents()));
+            client.setRating((1/client.getCredit())*100);
+            client.save();
+        }
     }
 }

@@ -9,18 +9,26 @@ import model.Clients;
 public class RiskPojo extends AsyncMessagePojo {
     private long idfidelite;
     private int risque;
-    RiskPojo riskPojo;
 
     public RiskPojo() {
     }
 
-    public void action(){
-        Clients client;
-        client = Clients.find.where().eq("idFidelite", idfidelite).findUnique();
+    public long getIdfidelite() {
+        return idfidelite;
+    }
 
-        if (client != null) {
-            riskPojo.idfidelite = idfidelite;
-            riskPojo.risque = client.getCredit();
+    public void setIdfidelite(long idfidelite) {
+        this.idfidelite = idfidelite;
+    }
+
+    public int getRisque() {
+        return risque;
+    }
+
+    public void setRisque(int risque) {
+        this.risque = risque;
+    }
+
+    public void action(){
         }
     }
-}

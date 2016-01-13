@@ -20,6 +20,7 @@ create table clients (
   typedemande               varchar(255),
   rib                       bigint,
   rating                    integer,
+  nb_incidents              integer,
   constraint uq_clients_email unique (email),
   constraint uq_clients_rib unique (rib),
   constraint pk_clients primary key (client_id))

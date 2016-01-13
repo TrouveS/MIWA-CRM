@@ -10,6 +10,7 @@ import controllers.utils.pojo.SyncMessagePojo.Monetarysystem.CartePojo;
 
 import controllers.utils.pojo.SyncMessagePojo.Monetarysystem.RatingPojo;
 import controllers.utils.pojo.SyncMessagePojo.Monetarysystem.RiskPojo;
+import model.Clients;
 import play.libs.Json;
 import play.mvc.Controller;
 import play.mvc.Result;
@@ -23,45 +24,52 @@ import static play.mvc.Results.ok;
 public class Rating extends Controller{
 
     /** Carte de la société venant de la Monetique  - Message synchrone**/
-    public static Result getCarte() {
-        Service service = Service.getInstances();
-        JsonNode json = request().body().asJson();
-        CartePojo pojo = new CartePojo();
-        pojo.action();
-        pojo = Json.fromJson(json, CartePojo.class);
+    public static Result getCarte(Long idFidelite) {
+        Clients client = Clients.find.where().eq("idFidelite", idFidelite).findUnique();
 
-        return ok(Json.toJson(pojo));
+        if (client != null)
+        {
+            CartePojo pojo = new CartePojo();
+            pojo.setIdfidelite(idFidelite);
+            pojo.setRIB(client.getRib());
+            pojo.setTypedemande(client.getTypedemande());
+            return ok(Json.toJson(pojo));
+        }
+        else
+            return badRequest();
+
     }
 
 
     /** Envoie du Rating à la  Monetique - Message synchrone**/
-    public static Result sendRating() throws UnirestException {
-        Service service = Service.getInstances();
-        JsonNode json = request().body().asJson();
-        RatingPojo pojo = new RatingPojo();
-        pojo.action();
-        pojo = Json.fromJson(json, RatingPojo.class);
-        Unirest.post(service.getServiceHttpURL(ServiceName.MONETARY_SYSTEM) + "/CRM/RATING")
-                .header("Content-type", "pplication/json")
-                .body(Json.toJson(pojo))
-                .asJson();
-        return ok();
+    public static Result sendRating(Long idFidelite) {
+        Clients client = Clients.find.where().eq("idFidelite", idFidelite).findUnique();
+
+        if (client != null) {
+            RatingPojo pojo = new RatingPojo();
+            pojo.setIdfidelite(client.getIdFidelite());
+            pojo.setRating(client.getRating());
+            return ok(Json.toJson(pojo));
+        }
+        else
+            return badRequest();
+
     }
 
     /** Envoie du Risque à la Monetique - Message synchrone **/
 
-    public static Result sendRisk() throws UnirestException {
-        Service service = Service.getInstances();
-        JsonNode json = request().body().asJson();
-        RiskPojo pojo =  new RiskPojo();
-        pojo.action();
-        pojo = Json.fromJson(json, RiskPojo.class);
-        Unirest.post(service.getServiceHttpURL(ServiceName.MONETARY_SYSTEM) + "/CRM/RISK")
-                .header("Content-type", "application/json")
-                .body(Json.toJson(pojo))
-                .asJson();
+    public static Result sendRisk(Long idFidelite) {
+        Clients client = Clients.find.where().eq("idFidelite", idFidelite).findUnique();
 
-        return ok();
+        if (client != null) {
+            RiskPojo pojo = new RiskPojo();
+            pojo.setIdfidelite(client.getIdFidelite());
+            pojo.setRisque(client.getRating());
+            return ok(Json.toJson(pojo));
+        }
+        else
+            return badRequest();
+
     }
 
 

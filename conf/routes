@@ -6,8 +6,8 @@
 GET     /                           controllers.Application.index
 
 #MONETARYSYSTEM
-POST        /MONETARYSYSTEM/RATING          controllers.MonetaryController.Rating.sendRating()
-POST        /MONETARYSYSTEM/RISK            controllers.MonetaryController.Rating.sendRisk()
+GET        /MONETARYSYSTEM/RATING/$idClient<[0-9]+>          controllers.MonetaryController.Rating.sendRating(idClient: Long)
+GET        /MONETARYSYSTEM/RISK/$idClient<[0-9]+>            controllers.MonetaryController.Rating.sendRisk(idClient: Long)
 #GET        /MONETARYSYSTEM/CARTE           controllers.MonetaryController.Rating.getCarte()
 #GET        /MONETARYSYSTEM/INCIDENT        controllers.MonetaryController.Rating.getIncidentPaiement()
 

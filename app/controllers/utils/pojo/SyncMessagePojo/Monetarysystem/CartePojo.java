@@ -10,24 +10,36 @@ public class CartePojo extends AsyncMessagePojo{
     private Long idfidelite;
     private String Typedemande;
     private Long RIB;
-    CartePojo cartePojo;
 
     public CartePojo() {
     }
 
+    public Long getIdfidelite() {
+        return idfidelite;
+    }
+
+    public void setIdfidelite(Long idfidelite) {
+        this.idfidelite = idfidelite;
+    }
+
+    public Long getRIB() {
+        return RIB;
+    }
+
+    public void setRIB(Long RIB) {
+        this.RIB = RIB;
+    }
+
+    public String getTypedemande() {
+        return Typedemande;
+    }
+
+    public void setTypedemande(String typedemande) {
+        Typedemande = typedemande;
+    }
+
     public void action(){
 
-        Clients client;
-        client = Clients.find.where().eq("idFidelite", idfidelite).findUnique();
-
-        if (client != null)
-        {
-            cartePojo.idfidelite = idfidelite;
-            cartePojo.RIB = client.getRib();
-            cartePojo.Typedemande = client.getTypedemande();
-            client.setTypedemande(Typedemande);
-            client.save();
-        }
     }
 
 }

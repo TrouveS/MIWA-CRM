@@ -80,7 +80,6 @@ public class Global extends GlobalSettings {
             e.printStackTrace();
        }
 
-
     }
 
     private void saveService() {

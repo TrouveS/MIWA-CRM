@@ -29,6 +29,7 @@ public class Global extends GlobalSettings {
     private void addCallback() {
         try {
             SyncMessageSender.addCallbackOnMainService(" 0 0 0 * * *", "/BACKOFFICE/SENDCLIENTS", "newDay", Service.SERVICE_NAME, ClockPojo.RequestType.GET);
+            SyncMessageSender.addCallbackOnMainService(" 0 0 0 * * *", "/BACKOFFICE/PROMOTION", "newDay", Service.SERVICE_NAME, ClockPojo.RequestType.GET);
         } catch (UnirestException e) {
             e.printStackTrace();
         }

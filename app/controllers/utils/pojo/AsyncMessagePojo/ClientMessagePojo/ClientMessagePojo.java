@@ -101,20 +101,14 @@ public class ClientMessagePojo extends AsyncMessagePojo{
         } catch (IOException | TimeoutException e) {
             e.printStackTrace();
         }
-        /** PrettyPrint a enlever **/
+        try {
+            AsyncMessageProducer crm_client_ecommerce_fidelise = new AsyncMessageProducer("CRM_to_ECOMMERCE_client");
+            crm_client_ecommerce_fidelise.sendMessage(client);
+            Logger.info("client message in queue {}", "CRM_to_BACKOFFICE_client");
 
-        System.out.println(newClient.getNom());
-        System.out.println(newClient.getPrenom());
-        System.out.println(newClient.getEmail());
-        System.out.println(newClient.getDate());
-        System.out.println(newClient.getSexe());
-        System.out.println(newClient.getMagasin());
-        System.out.println(newClient.getIdRue());
-        System.out.println(newClient.getIdVille());
-        System.out.println(newClient.getIdCodePostal());
-        System.out.println("-----------------------");
-        System.out.println(newClient.getIdFidelite());
-        System.out.println(newClient.getUserId());
+        } catch (IOException | TimeoutException e) {
+            e.printStackTrace();
+        }
     }
 
 }

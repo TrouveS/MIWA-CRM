@@ -47,6 +47,15 @@ public class ClientList{
         } catch (IOException | TimeoutException e) {
             e.printStackTrace();
         }
+        try {
+            AsyncMessageProducer crm_client_ecommerce_list = new AsyncMessageProducer("CRM_to_ECOMMERCE_client");
+            crm_client_ecommerce_list.sendMessage(clientListPojo);
+            cleanClientList();
+            Logger.info("client message in queue {}", "CRM_to_ECOMMERCE_client");
+
+        } catch (IOException | TimeoutException e) {
+            e.printStackTrace();
+        }
         return ok();
     }
 }

@@ -20,7 +20,6 @@ public class PromotionPojo extends AsyncMessagePojo{
     private Long client_id;
     private Integer promotion;
 
-
     @Override
     public void action(){
 

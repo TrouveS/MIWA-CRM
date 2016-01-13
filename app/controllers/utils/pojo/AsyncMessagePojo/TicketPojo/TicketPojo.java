@@ -5,6 +5,7 @@ import controllers.utils.sender.AsyncMessageProducer;
 import model.Article;
 import play.Logger;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.TimeoutException;
 
@@ -17,11 +18,76 @@ public class TicketPojo extends AsyncMessagePojo {
     private String ticket_id;
     private String magasin_id;
     private String ticket_date;
-    private String idFidelite;
-    private String total;
-    private List<Article> article;
+    private Long idFidelite;
+    private String date;
+    private Float total;
+    private List<Article> articles;
 
     public TicketPojo(){}
+
+    public Long getClient_id() {
+        return client_id;
+    }
+
+    public void setClient_id(Long client_id) {
+        this.client_id = client_id;
+    }
+
+    public String getTicket_id() {
+        return ticket_id;
+    }
+
+    public void setTicket_id(String ticket_id) {
+        this.ticket_id = ticket_id;
+    }
+
+    public String getMagasin_id() {
+        return magasin_id;
+    }
+
+    public void setMagasin_id(String magasin_id) {
+        this.magasin_id = magasin_id;
+    }
+
+    public String getTicket_date() {
+        return ticket_date;
+    }
+
+    public void setTicket_date(String ticket_date) {
+        this.ticket_date = ticket_date;
+    }
+
+    public Long getIdFidelite() {
+        return idFidelite;
+    }
+
+    public void setIdFidelite(Long idFidelite) {
+        this.idFidelite = idFidelite;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
+
+    public Float getTotal() {
+        return total;
+    }
+
+    public void setTotal(Float total) {
+        this.total = total;
+    }
+
+    public List<Article> getArticles() {
+        return articles;
+    }
+
+    public void setArticles(List<Article> articles) {
+        this.articles = articles;
+    }
 
     @Override
     public void action()
@@ -34,7 +100,7 @@ public class TicketPojo extends AsyncMessagePojo {
         ticket.ticket_date = this.ticket_date;
         ticket.idFidelite = this.idFidelite;
         ticket.total = this.total;
-        ticket.article = this.article;
+        ticket.articles = this.articles;
 
         try {
             AsyncMessageProducer bi_ticket = new AsyncMessageProducer("CRM_ticket_caisse");

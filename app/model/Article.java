@@ -5,29 +5,29 @@ package model;
  */
 public class Article {
 
-    private String article_id;
-    private Integer price;
+    private Long article_id;
+    private Float price;
     private Integer quantity;
 
-    public Article(String article_id, Integer price, Integer quantity) {
+    public Article(Long article_id, Float price, Integer quantity) {
         this.article_id = article_id;
         this.price = price;
         this.quantity = quantity;
     }
 
-    public String getArticle_id() {
+    public Long getArticle_id() {
         return article_id;
     }
 
-    public void setArticle_id(String article_id) {
+    public void setArticle_id(Long article_id) {
         this.article_id = article_id;
     }
 
-    public Integer getPrice() {
+    public Float getPrice() {
         return price;
     }
 
-    public void setPrice(Integer price) {
+    public void setPrice(Float price) {
         this.price = price;
     }
 

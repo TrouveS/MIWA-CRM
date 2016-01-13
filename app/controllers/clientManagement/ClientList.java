@@ -39,19 +39,19 @@ public class ClientList{
     public static Result sendModificationClient() {
          ClientListPojo clientListPojo = new ClientListPojo();
             try {
-                AsyncMessageProducer crm_client_list = new AsyncMessageProducer("CRM_to_BACKOFFICE_client");
+                AsyncMessageProducer crm_client_list = new AsyncMessageProducer("CRM_to_BACKOFFICE_clientlist");
             crm_client_list.sendMessage(clientListPojo);
             cleanClientList();
-            Logger.info("client message in queue {}", "CRM_to_BACKOFFICE_client");
+            Logger.info("client message in queue {}", "CRM_to_BACKOFFICE_clientlist");
 
         } catch (IOException | TimeoutException e) {
             e.printStackTrace();
         }
         try {
-            AsyncMessageProducer crm_client_ecommerce_list = new AsyncMessageProducer("CRM_to_ECOMMERCE_client");
+            AsyncMessageProducer crm_client_ecommerce_list = new AsyncMessageProducer("CRM_to_ECOMMERCE_clientlist");
             crm_client_ecommerce_list.sendMessage(clientListPojo);
             cleanClientList();
-            Logger.info("client message in queue {}", "CRM_to_ECOMMERCE_client");
+            Logger.info("client message in queue {}", "CRM_to_ECOMMERCE_clientlist");
 
         } catch (IOException | TimeoutException e) {
             e.printStackTrace();

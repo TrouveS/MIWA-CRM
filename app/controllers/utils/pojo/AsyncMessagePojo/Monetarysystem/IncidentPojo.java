@@ -8,7 +8,7 @@ import model.Clients;
  * Created by AmdouniNajla on 12/01/2016.
  */
 public class IncidentPojo extends AsyncMessagePojo {
-    private Long idFidelite;
+    private Long idfidelite;
     private int valeur_incident;
     private String erreur;
 
@@ -17,9 +17,8 @@ public class IncidentPojo extends AsyncMessagePojo {
 
     public void action(){
         Clients client;
-        client = Clients.find.where().eq("idFidelite", idFidelite).findUnique();
+        client = Clients.find.where().eq("idFidelite", idfidelite).findUnique();
         Integer valeur_incident_actuelle = 0;
-
         if(client != null)
         {
             valeur_incident_actuelle = (client.getCredit() * client.getNbIncidents()) + valeur_incident_actuelle;
@@ -27,5 +26,6 @@ public class IncidentPojo extends AsyncMessagePojo {
             client.setRating((1/client.getCredit())*100);
             client.save();
         }
+
     }
 }

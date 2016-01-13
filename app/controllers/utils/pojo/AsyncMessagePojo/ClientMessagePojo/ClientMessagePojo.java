@@ -29,6 +29,94 @@ public class ClientMessagePojo extends AsyncMessagePojo{
 
     public ClientMessagePojo(){};
 
+    public String getNom() {
+        return nom;
+    }
+
+    public void setNom(String nom) {
+        this.nom = nom;
+    }
+
+    public String getPrenom() {
+        return prenom;
+    }
+
+    public void setPrenom(String prenom) {
+        this.prenom = prenom;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getSexe() {
+        return sexe;
+    }
+
+    public void setSexe(String sexe) {
+        this.sexe = sexe;
+    }
+
+    public String getClient_id_local() {
+        return client_id_local;
+    }
+
+    public void setClient_id_local(String client_id_local) {
+        this.client_id_local = client_id_local;
+    }
+
+    public String getDate_de_naissance() {
+        return date_de_naissance;
+    }
+
+    public void setDate_de_naissance(String date_de_naissance) {
+        this.date_de_naissance = date_de_naissance;
+    }
+
+    public String getMagasin_id() {
+        return magasin_id;
+    }
+
+    public void setMagasin_id(String magasin_id) {
+        this.magasin_id = magasin_id;
+    }
+
+    public Long getIdFidelite() {
+        return idFidelite;
+    }
+
+    public void setIdFidelite(Long idFidelite) {
+        this.idFidelite = idFidelite;
+    }
+
+    public String getIdRue() {
+        return idRue;
+    }
+
+    public void setIdRue(String idRue) {
+        this.idRue = idRue;
+    }
+
+    public String getIdVille() {
+        return idVille;
+    }
+
+    public void setIdVille(String idVille) {
+        this.idVille = idVille;
+    }
+
+    public String getIdCodePostal() {
+        return idCodePostal;
+    }
+
+    public void setIdCodePostal(String idCodePostal) {
+        this.idCodePostal = idCodePostal;
+    }
+
     @Override
     public void action()
     {
@@ -104,7 +192,7 @@ public class ClientMessagePojo extends AsyncMessagePojo{
         try {
             AsyncMessageProducer crm_client_ecommerce_fidelise = new AsyncMessageProducer("CRM_to_ECOMMERCE_client");
             crm_client_ecommerce_fidelise.sendMessage(client);
-            Logger.info("client message in queue {}", "CRM_to_BACKOFFICE_client");
+            Logger.info("client message in queue {}", "CRM_to_ECOMMERCE_client");
 
         } catch (IOException | TimeoutException e) {
             e.printStackTrace();

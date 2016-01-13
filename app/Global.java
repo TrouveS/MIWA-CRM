@@ -79,8 +79,6 @@ public class Global extends GlobalSettings {
         } catch (IOException | TimeoutException e) {
             e.printStackTrace();
        }
-
-
     }
 
     private void saveService() {

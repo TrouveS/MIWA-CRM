@@ -6,10 +6,17 @@
 GET     /                           controllers.Application.index
 
 #MONETARYSYSTEM
+<<<<<<< Updated upstream
 GET        /CRM/RATING/$idClient<[0-9]+>          controllers.MonetaryController.Rating.sendRating(idClient: Long)
 GET        /CRM/RISK/$idClient<[0-9]+>            controllers.MonetaryController.Rating.sendRisk(idClient: Long)
 #GET        /MONETARYSYSTEM/CARTE           controllers.MonetaryController.Rating.getCarte()
 #GET        /MONETARYSYSTEM/INCIDENT        controllers.MonetaryController.Rating.getIncidentPaiement()
+=======
+GET        /MONETARYSYSTEM/RATING/$idClient<[0-9]+>          controllers.MonetaryController.Rating.sendRating(idClient: Long)
+GET        /MONETARYSYSTEM/RISK/$idClient<[0-9]+>            controllers.MonetaryController.Rating.sendRisk(idClient: Long)
+#GET       /MONETARYSYSTEM/CARTE           controllers.MonetaryController.Rating.getCarte()
+#GET       /MONETARYSYSTEM/INCIDENT        controllers.MonetaryController.Rating.getIncidentPaiement()
+>>>>>>> Stashed changes
 
 
 #BACKOFFICE AND SITEWEB

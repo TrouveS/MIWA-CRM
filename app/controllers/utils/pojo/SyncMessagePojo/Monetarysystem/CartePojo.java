@@ -8,8 +8,8 @@ import model.Clients;
  */
 public class CartePojo extends AsyncMessagePojo{
     private Long idfidelite;
-    private String Typedemande;
-    private Long RIB;
+    private String typedemande;
+    private Long rib;
 
     public CartePojo() {
     }
@@ -23,19 +23,19 @@ public class CartePojo extends AsyncMessagePojo{
     }
 
     public Long getRIB() {
-        return RIB;
+        return rib;
     }
 
-    public void setRIB(Long RIB) {
-        this.RIB = RIB;
+    public void setRIB(Long rib) {
+        this.rib = rib;
     }
 
     public String getTypedemande() {
-        return Typedemande;
+        return typedemande;
     }
 
     public void setTypedemande(String typedemande) {
-        Typedemande = typedemande;
+        this.typedemande = typedemande;
     }
 
     public void action(){

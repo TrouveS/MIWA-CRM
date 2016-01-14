@@ -6,6 +6,7 @@ import controllers.utils.pojo.AsyncMessagePojo.TicketPojo.TicketPojo;
 import controllers.utils.pojo.SyncMessagePojo.ClockPojo;
 import controllers.utils.sender.AsyncMessageConsumer;
 import controllers.utils.sender.SyncMessageSender;
+import model.Clients;
 import play.Application;
 import play.GlobalSettings;
 import play.Logger;
@@ -23,6 +24,23 @@ public class Global extends GlobalSettings {
         saveService();
         addCallback();
         subscribeQueue();
+        Clients client1 = new Clients();
+        client1.setNom("Machiavelli");
+        client1.setPrenom("Niccolo");
+        client1.setEmail("n.machiavel@gmail.it");
+        client1.setSexe("H");
+        client1.setDate("23/03/1500");
+        client1.setIdRue("Via il Principe");
+        client1.setIdVille("Firenze");
+        client1.setIdCodePostal("FI234");
+        client1.setMagasin("SPESA2000");
+        client1.setNbIncidents(0);
+        client1.setCredit(500);
+        client1.save();
+        Long idfi = 1450L;
+        client1.setIdFidelite(idfi);
+        client1.save();
+
         super.onStart(application);
 
     }

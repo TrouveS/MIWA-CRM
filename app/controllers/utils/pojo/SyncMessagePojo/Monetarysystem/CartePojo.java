@@ -12,6 +12,7 @@ public class CartePojo extends AsyncMessagePojo{
     private String rib;
 
     public CartePojo() {
+
     }
 
     public Long getIdfidelite() {

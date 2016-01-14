@@ -49,6 +49,16 @@ public class Clients extends Model {
 
 
     public Clients() {
+        for(int i = 0; i<4; i++)
+        {
+            Double rib_gen = 1000 + (Math.random() * (9999 - 1000));
+            Integer rib_body = rib_gen.intValue();
+            rib = rib + rib_body.toString() + "-";
+        }
+        Double cle_gen = 10 + (Math.random() * (99 - 10));
+        Integer cle = cle_gen.intValue();
+        rib = rib + cle.toString();
+        rating = 100;
     }
 
     public String getRib() {

@@ -7,6 +7,7 @@ import controllers.utils.Service;
 import controllers.utils.ServiceName;
 import controllers.utils.pojo.SyncMessagePojo.AppPojo;
 import controllers.utils.pojo.SyncMessagePojo.ClockPojo;
+import controllers.utils.pojo.SyncMessagePojo.SyncMessagePojo;
 import play.Logger;
 import play.libs.Json;
 
@@ -27,6 +28,16 @@ public class SyncMessageSender {
         return Unirest.post(service.getServiceHttpURL(ServiceName.MAIN_WS) + Service.MAIN_WS_PATH_CLOCK)
                 .header("Content-type", "application/json")
                 .body(Json.toJson(new ClockPojo(cron, pathCallBack, body, serviceName.toString(), requestType)).toString())
+                .asString();
+    }
+
+    public static HttpResponse<String> sendMessagePostSync(SyncMessagePojo body,
+                                                       ServiceName serviceName, String endpoint) throws UnirestException {
+        Service service = Service.getInstances();
+        Logger.info("Send message", body);
+        return Unirest.post(service.getServiceHttpURL(serviceName) + endpoint)
+                .header("Content-type", "application/json")
+                .body(Json.toJson(body).toString())
                 .asString();
     }
 }

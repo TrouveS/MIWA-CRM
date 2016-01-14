@@ -3,6 +3,7 @@ package controllers.utils.pojo.AsyncMessagePojo.TicketPojo;
 import controllers.utils.pojo.AsyncMessagePojo.AsyncMessagePojo;
 import controllers.utils.sender.AsyncMessageProducer;
 import model.Article;
+import model.Clients;
 import play.Logger;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -93,6 +94,11 @@ public class TicketPojo extends AsyncMessagePojo {
     public void action()
     {
         TicketPojo ticket =  new TicketPojo();
+        Clients client = Clients.find.where().eq("idFidelite", idFidelite).findUnique();
+        if(client != null) {
+            client.setRating(client.getRating() + 1);
+            client.save();
+        }
 
         ticket.client_id = this.client_id;
         ticket.ticket_id = this.ticket_id;
@@ -101,6 +107,8 @@ public class TicketPojo extends AsyncMessagePojo {
         ticket.idFidelite = this.idFidelite;
         ticket.total = this.total;
         ticket.articles = this.articles;
+
+
 
         try {
             AsyncMessageProducer bi_ticket = new AsyncMessageProducer("CRM_ticket_caisse");

@@ -1,5 +1,7 @@
 package controllers.utils.pojo.AsyncMessagePojo.ClientMessagePojo;
 
+import com.mashape.unirest.http.exceptions.UnirestException;
+import controllers.MonetaryController.Rating;
 import controllers.clientManagement.ClientList;
 import controllers.utils.pojo.AsyncMessagePojo.AsyncMessagePojo;
 import controllers.utils.sender.AsyncMessageProducer;
@@ -127,8 +129,7 @@ public class ClientMessagePojo extends AsyncMessagePojo{
     }
 
     @Override
-    public void action()
-    {
+    public void action() throws UnirestException {
         Clients newClient = new Clients();
         ClientMessagePojo client = new ClientMessagePojo();
         ClientList cl = new ClientList();
@@ -192,6 +193,8 @@ public class ClientMessagePojo extends AsyncMessagePojo{
 
         newClient.save();
         cl.addToClientList(client);
+
+        Rating.getCarte(newClient.getIdFidelite());
 
         try {
             AsyncMessageProducer crm_client_fidelise = new AsyncMessageProducer("CRM_to_BACKOFFICE_client");

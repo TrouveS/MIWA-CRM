@@ -40,6 +40,12 @@ public class Clients extends Model {
     private Integer credit; /**Risque de credit**/
     @Column(nullable = true)
     private String typedemande;
+    @Column(nullable = true, unique = true)
+    private  String rib;
+    @Column(nullable = true)
+    private Integer rating;
+    @Column(nullable = true)
+    private Integer nbIncidents;
 
     public String getRib() {
         return rib;
@@ -49,12 +55,6 @@ public class Clients extends Model {
         this.rib = rib;
     }
 
-    @Column(nullable = true, unique = true)
-    private  String rib;
-    @Column(nullable = true)
-    private Integer rating;
-    @Column(nullable = true)
-    private Integer nbIncidents;
 
 
     public Clients() {

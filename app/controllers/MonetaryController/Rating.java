@@ -1,6 +1,7 @@
 package controllers.MonetaryController;
 
 import com.fasterxml.jackson.databind.JsonNode;
+import com.mashape.unirest.http.HttpResponse;
 import com.mashape.unirest.http.Unirest;
 import com.mashape.unirest.http.exceptions.UnirestException;
 import controllers.utils.Service;
@@ -9,6 +10,7 @@ import controllers.utils.pojo.SyncMessagePojo.Monetarysystem.CartePojo;
 
 
 import controllers.utils.pojo.SyncMessagePojo.Monetarysystem.RatingPojo;
+import controllers.utils.pojo.SyncMessagePojo.Monetarysystem.ReponseCartePojo;
 import controllers.utils.pojo.SyncMessagePojo.Monetarysystem.RiskPojo;
 import model.Clients;
 import play.libs.Json;
@@ -24,16 +26,28 @@ import static play.mvc.Results.ok;
 public class Rating extends Controller{
 
     /** Carte de la société venant de la Monetique  - Message synchrone**/
-    public static Result getCarte(Long idFidelite) {
+    public static Result getCarte(Long idFidelite) throws UnirestException {
         Clients client = Clients.find.where().eq("idFidelite", idFidelite).findUnique();
 
         if (client != null)
         {
+            Service service = Service.getInstances();
             CartePojo pojo = new CartePojo();
-            pojo.setIdfidelite(idFidelite);
+            pojo.setIdfidelite(client.getIdFidelite());
             pojo.setRIB(client.getRib());
             pojo.setTypedemande(client.getTypedemande());
-            return ok(Json.toJson(pojo));
+
+            HttpResponse<com.mashape.unirest.http.JsonNode> jsonResponse = Unirest.post(service.getServiceHttpURL(ServiceName.CRM) + "/MONETARYSYSTEM/RATING")
+                    .header("Content-type", "application/json")
+                    .header("accept", "application/json")
+                    .body(Json.toJson(client.toString()))
+                    .asJson();
+
+            ReponseCartePojo reponse = Json.fromJson(Json.parse(jsonResponse.getRawBody()), ReponseCartePojo.class);
+            client.setCredit(reponse.getValeur_credit());
+            client.save();
+
+            return ok();
         }
         else
             return badRequest();

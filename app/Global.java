@@ -91,7 +91,4 @@ public class Global extends GlobalSettings {
         }
     }
 
-    /**Création d'un client **/
-
-
 }

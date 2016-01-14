@@ -12,6 +12,9 @@ GET        /CRM/RISK/$idClient<[0-9]+>            controllers.MonetaryController
 #GET        /MONETARYSYSTEM/INCIDENT        controllers.MonetaryController.Rating.getIncidentPaiement()
 
 
+
+
+
 #BACKOFFICE AND SITEWEB
 POST        /BACKOFFICE/SENDCLIENTS         controllers.clientManagement.ClientList.sendModificationClient()
 POST        /BACKOFFICE/PROMOTION          controllers.clientManagement.PromotionList.sendPromotionList()

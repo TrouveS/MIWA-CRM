@@ -28,6 +28,15 @@ public class ClientMessagePojo extends AsyncMessagePojo{
     private String idRue;
     private String idVille;
     private String idCodePostal;
+    private String rib;
+
+    public String getRib() {
+        return rib;
+    }
+
+    public void setRib(String rib) {
+        this.rib = rib;
+    }
 
     public ClientMessagePojo(){};
 
@@ -146,6 +155,7 @@ public class ClientMessagePojo extends AsyncMessagePojo{
             client.idRue = existingClient.getIdRue();
             client.idVille = existingClient.getIdCodePostal();
             client.idCodePostal = existingClient.getIdCodePostal();
+            client.rib = existingClient.getRib();
 
             System.out.println("Client existant");
             existingClient.save();
@@ -163,6 +173,7 @@ public class ClientMessagePojo extends AsyncMessagePojo{
         newClient.setIdRue(this.idRue);
         newClient.setIdVille(this.idVille);
         newClient.setIdCodePostal(this.idCodePostal);
+        newClient.setRib(this.rib);
 
 
         /** Creation du POJO a renvoye **/
@@ -178,6 +189,7 @@ public class ClientMessagePojo extends AsyncMessagePojo{
         client.idRue = newClient.getIdRue();
         client.idVille = newClient.getIdCodePostal();
         client.idCodePostal = newClient.getIdCodePostal();
+        client.rib = newClient.getRib();
 
         newClient.save();
         cl.addToClientList(client);

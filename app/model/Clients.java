@@ -40,8 +40,17 @@ public class Clients extends Model {
     private Integer credit; /**Risque de credit**/
     @Column(nullable = true)
     private String typedemande;
+
+    public String getRib() {
+        return rib;
+    }
+
+    public void setRib(String rib) {
+        this.rib = rib;
+    }
+
     @Column(nullable = true, unique = true)
-    private  Long rib;
+    private  String rib;
     @Column(nullable = true)
     private Integer rating;
     @Column(nullable = true)
@@ -157,13 +166,7 @@ public class Clients extends Model {
         this.typedemande = typedemande;
     }
 
-    public Long getRib() {
-        return rib;
-    }
 
-    public void setRib(Long rib) {
-        this.rib = rib;
-    }
 
     public Integer getRating() {
         return rating;

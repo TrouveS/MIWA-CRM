@@ -88,4 +88,8 @@ public class Global extends GlobalSettings {
             e.printStackTrace();
         }
     }
+
+    /**Création d'un client **/
+
+
 }

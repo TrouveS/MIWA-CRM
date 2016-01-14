@@ -24,23 +24,7 @@ public class Global extends GlobalSettings {
         saveService();
         addCallback();
         subscribeQueue();
-        Clients client1 = new Clients();
-        client1.setNom("Machiavelli");
-        client1.setPrenom("Niccolo");
-        client1.setEmail("n.machiavel@gmail.it");
-        client1.setSexe("H");
-        client1.setDate("23/03/1500");
-        client1.setIdRue("Via il Principe");
-        client1.setIdVille("Firenze");
-        client1.setIdCodePostal("FI234");
-        client1.setMagasin("SPESA2000");
-        client1.setNbIncidents(0);
-        client1.setCredit(500);
-        client1.save();
-        Long idfi = 1450L;
-        client1.setIdFidelite(idfi);
-        client1.save();
-
+        createClients();
         super.onStart(application);
 
     }
@@ -54,8 +38,7 @@ public class Global extends GlobalSettings {
         }
     }
 
-    private void subscribeQueue()
-    {
+    private void subscribeQueue() {
         /** Information nouveau client venant du BackOffice **/
         try {
             AsyncMessageConsumer crm_client = new AsyncMessageConsumer("CRM_client", ClientMessagePojo.class);
@@ -96,7 +79,7 @@ public class Global extends GlobalSettings {
 
         } catch (IOException | TimeoutException e) {
             e.printStackTrace();
-       }
+        }
     }
 
     private void saveService() {
@@ -105,5 +88,87 @@ public class Global extends GlobalSettings {
         } catch (UnirestException e) {
             e.printStackTrace();
         }
+    }
+
+    private void createClients() {
+        Clients client1 = new Clients();
+        client1.setNom("Machiavelli");
+        client1.setPrenom("Niccolo");
+        client1.setEmail("n.machiavel@gmail.it");
+        client1.setSexe("H");
+        client1.setDate("23/03/1500");
+        client1.setIdRue("Via il Principe");
+        client1.setIdVille("Firenze");
+        client1.setIdCodePostal("FI234");
+        client1.setMagasin("SPESA2000");
+        client1.setNbIncidents(0);
+        client1.setCredit(500);
+        client1.save();
+        client1.setIdFidelite(1450L);
+        client1.save();
+
+        Clients client2 = new Clients();
+        client2.setNom("Alighieri");
+        client2.setPrenom("Dante");
+        client2.setEmail("d.alighieri@gmail.it");
+        client2.setSexe("H");
+        client2.setDate("23/03/1410");
+        client2.setIdRue("Via Inferno");
+        client2.setIdVille("Firenze");
+        client2.setIdCodePostal("FI232");
+        client2.setMagasin("SPESA2000");
+        client2.setNbIncidents(0);
+        client2.setCredit(500);
+        client2.save();
+        client2.setIdFidelite(1410L);
+        client2.save();
+
+        Clients client3 = new Clients();
+        client3.setNom("Borgia");
+        client3.setPrenom("Cesare");
+        client3.setEmail("cesare.il.grande@gmail.it");
+        client3.setSexe("H");
+        client3.setDate("23/12/1540");
+        client3.setIdRue("Via Imperatore");
+        client3.setIdVille("Roma");
+        client3.setIdCodePostal("RO590");
+        client3.setMagasin("SPESA2000");
+        client3.setNbIncidents(0);
+        client3.setCredit(1000);
+        client3.save();
+        client3.setIdFidelite(1540L);
+        client3.save();
+
+        Clients client4 = new Clients();
+        client4.setNom("Da Vinci");
+        client4.setPrenom("Leonardo");
+        client4.setEmail("maestro.leo@gmail.it");
+        client4.setSexe("H");
+        client4.setDate("14/03/1510");
+        client4.setIdRue("Via Mona Lisa");
+        client4.setIdVille("Venezia");
+        client4.setIdCodePostal("VE442");
+        client4.setMagasin("SPESA2000");
+        client4.setNbIncidents(0);
+        client4.setCredit(530);
+        client4.save();
+        client4.setIdFidelite(1551L);
+        client4.save();
+
+        Clients client5 = new Clients();
+        client5.setNom("Buonarotti");
+        client5.setPrenom("Michelangelo");
+        client5.setEmail("magico.miche@gmail.it");
+        client5.setSexe("H");
+        client5.setDate("17/03/1490");
+        client5.setIdRue("Via Davide");
+        client5.setIdVille("Roma");
+        client5.setIdCodePostal("RO662");
+        client5.setMagasin("SPESA2000");
+        client5.setNbIncidents(0);
+        client5.setCredit(200);
+        client5.save();
+        client5.setIdFidelite(1490L);
+        client5.save();
     }
 }

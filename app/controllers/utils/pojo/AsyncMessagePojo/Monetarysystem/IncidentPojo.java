@@ -12,18 +12,41 @@ public class IncidentPojo extends AsyncMessagePojo {
     private int valeur_incident;
     private String erreur;
 
+    public Long getIdfidelite() {
+        return idfidelite;
+    }
+
+    public void setIdfidelite(Long idfidelite) {
+        this.idfidelite = idfidelite;
+    }
+
+    public int getValeur_incident() {
+        return valeur_incident;
+    }
+
+    public void setValeur_incident(int valeur_incident) {
+        this.valeur_incident = valeur_incident;
+    }
+
+    public String getErreur() {
+        return erreur;
+    }
+
+    public void setErreur(String erreur) {
+        this.erreur = erreur;
+    }
+
     public IncidentPojo() {
     }
 
     public void action(){
         Clients client;
         client = Clients.find.where().eq("idFidelite", idfidelite).findUnique();
-        Integer valeur_incident_actuelle = 0;
+
         if(client != null)
         {
-            valeur_incident_actuelle = (client.getCredit() * client.getNbIncidents()) + valeur_incident_actuelle;
-            client.setCredit(valeur_incident_actuelle/(client.getNbIncidents()));
-            client.setRating((1/client.getCredit())*100);
+            client.setRating(client.getRating() - 5);
+            client.setCredit(client.getCredit() - valeur_incident);
             client.save();
         }
 

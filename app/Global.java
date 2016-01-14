@@ -6,6 +6,7 @@ import controllers.utils.pojo.AsyncMessagePojo.TicketPojo.TicketPojo;
 import controllers.utils.pojo.SyncMessagePojo.ClockPojo;
 import controllers.utils.sender.AsyncMessageConsumer;
 import controllers.utils.sender.SyncMessageSender;
+import model.Clients;
 import play.Application;
 import play.GlobalSettings;
 import play.Logger;
@@ -23,6 +24,7 @@ public class Global extends GlobalSettings {
         saveService();
         addCallback();
         subscribeQueue();
+        Clients client1 = new Clients();
         super.onStart(application);
 
     }

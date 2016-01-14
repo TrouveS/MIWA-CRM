@@ -9,7 +9,7 @@ import model.Clients;
 public class CartePojo extends AsyncMessagePojo{
     private Long idfidelite;
     private String typedemande;
-    private Long rib;
+    private String rib;
 
     public CartePojo() {
     }
@@ -22,11 +22,11 @@ public class CartePojo extends AsyncMessagePojo{
         this.idfidelite = idfidelite;
     }
 
-    public Long getRIB() {
+    public String getRIB() {
         return rib;
     }
 
-    public void setRIB(Long rib) {
+    public void setRIB(String rib) {
         this.rib = rib;
     }
 

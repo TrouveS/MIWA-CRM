@@ -47,7 +47,6 @@ public class Clients extends Model {
     @Column(nullable = true)
     private Integer nbIncidents;
 
-
     public Clients() {
         for(int i = 0; i<4; i++)
         {

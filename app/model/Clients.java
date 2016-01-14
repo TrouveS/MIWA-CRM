@@ -47,17 +47,15 @@ public class Clients extends Model {
     @Column(nullable = true)
     private Integer nbIncidents;
 
+    public Clients() {
+    }
+
     public String getRib() {
         return rib;
     }
 
     public void setRib(String rib) {
         this.rib = rib;
-    }
-
-
-
-    public Clients() {
     }
 
     public Long getUserId() {

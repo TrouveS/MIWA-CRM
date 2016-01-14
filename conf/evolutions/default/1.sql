@@ -18,7 +18,7 @@ create table clients (
   typologie                 varchar(255),
   credit                    integer,
   typedemande               varchar(255),
-  rib                       bigint,
+  rib                       varchar(255),
   rating                    integer,
   nb_incidents              integer,
   constraint uq_clients_email unique (email),

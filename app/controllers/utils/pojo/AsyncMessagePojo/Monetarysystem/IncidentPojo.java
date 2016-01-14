@@ -18,12 +18,11 @@ public class IncidentPojo extends AsyncMessagePojo {
     public void action(){
         Clients client;
         client = Clients.find.where().eq("idFidelite", idfidelite).findUnique();
-        Integer valeur_incident_actuelle = 0;
+
         if(client != null)
         {
-            valeur_incident_actuelle = (client.getCredit() * client.getNbIncidents()) + valeur_incident_actuelle;
-            client.setCredit(valeur_incident_actuelle/(client.getNbIncidents()));
-            client.setRating((1/client.getCredit())*100);
+            client.setRating(client.getRating()-5);
+            client.setCredit(client.getCredit() - valeur_incident);
             client.save();
         }
 

@@ -197,21 +197,11 @@ public class ClientMessagePojo extends AsyncMessagePojo{
         Rating.getCarte(newClient.getIdFidelite());
 
         try {
-            AsyncMessageProducer crm_client_fidelise = new AsyncMessageProducer("CRM_to_BACKOFFICE_client");
+            AsyncMessageProducer crm_client_fidelise = new AsyncMessageProducer("CRM_client");
             crm_client_fidelise.sendMessage(client);
-            Logger.info("client message in queue {}", "CRM_to_BACKOFFICE_client");
-
-        } catch (IOException | TimeoutException e) {
-            e.printStackTrace();
-        }
-        try {
-            AsyncMessageProducer crm_client_ecommerce_fidelise = new AsyncMessageProducer("CRM_to_ECOMMERCE_client");
-            crm_client_ecommerce_fidelise.sendMessage(client);
-            Logger.info("client message in queue {}", "CRM_to_ECOMMERCE_client");
-
+            Logger.info("client message in queue {}", "CRM_client");
         } catch (IOException | TimeoutException e) {
             e.printStackTrace();
         }
     }
-
 }

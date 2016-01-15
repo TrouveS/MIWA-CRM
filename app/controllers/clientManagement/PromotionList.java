@@ -39,19 +39,10 @@ public class PromotionList {
     public static Result sendPromotionList() {
         PromotionListPojo promotionListPojo = new PromotionListPojo();
         try {
-            AsyncMessageProducer crm_promotion_bo_list = new AsyncMessageProducer("CRM_to_BACKOFFICE_promotion");
+            AsyncMessageProducer crm_promotion_bo_list = new AsyncMessageProducer("CRM_promotion");
             crm_promotion_bo_list.sendMessage(promotionListPojo);
             cleanPromotionList();
-            Logger.info("client message in queue {}", "CRM_to_BACKOFFICE_client");
-
-        } catch (IOException | TimeoutException e) {
-            e.printStackTrace();
-        }
-        try {
-            AsyncMessageProducer crm_promotion_crm_list = new AsyncMessageProducer("CRM_to_ECOMMERCE_promotion");
-            crm_promotion_crm_list.sendMessage(promotionListPojo);
-            cleanPromotionList();
-            Logger.info("client message in queue {}", "CRM_to_ECOMMERCE_client");
+            Logger.info("client message in queue {}", "CRM_promotion");
 
         } catch (IOException | TimeoutException e) {
             e.printStackTrace();

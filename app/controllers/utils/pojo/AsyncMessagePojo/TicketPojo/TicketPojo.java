@@ -111,9 +111,9 @@ public class TicketPojo extends AsyncMessagePojo {
 
 
         try {
-            AsyncMessageProducer bi_ticket = new AsyncMessageProducer("CRM_ticket_caisse");
+            AsyncMessageProducer bi_ticket = new AsyncMessageProducer("CRM_ticketCaisse");
             bi_ticket.sendMessage(ticket);
-            Logger.info("client message in queue {}", "CRM_ticket_caisse");
+            Logger.info("client message in queue {}", "CRM_ticketCaisse");
 
         } catch (IOException | TimeoutException e) {
             e.printStackTrace();

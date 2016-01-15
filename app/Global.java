@@ -41,30 +41,30 @@ public class Global extends GlobalSettings {
     private void subscribeQueue() {
         /** Information nouveau client venant du BackOffice **/
         try {
-            AsyncMessageConsumer crm_client = new AsyncMessageConsumer("CRM_client", ClientMessagePojo.class);
+            AsyncMessageConsumer crm_client = new AsyncMessageConsumer("BO_client", ClientMessagePojo.class);
             Thread clientThread = new Thread(crm_client);
             clientThread.start();
-            Logger.info("client message in queue {}", "CRM_client");
+            Logger.info("client message in queue {}", "BO_client");
 
         } catch (IOException | TimeoutException e) {
             e.printStackTrace();
         }
         /** Ticket venant du BackOffice **/
         try {
-            AsyncMessageConsumer backoffice_ticket = new AsyncMessageConsumer("ticket_caisse", TicketPojo.class);
+            AsyncMessageConsumer backoffice_ticket = new AsyncMessageConsumer("BO_ticketCaisse", TicketPojo.class);
             Thread clientThread = new Thread(backoffice_ticket);
             clientThread.start();
-            Logger.info("client message in queue {}", "ticket_caisse");
+            Logger.info("client message in queue {}", "BO_ticketCaisse");
 
         } catch (IOException | TimeoutException e) {
             e.printStackTrace();
         }
         /** Ticket venant du ECommerce **/
         try {
-            AsyncMessageConsumer ecommerce_ticket = new AsyncMessageConsumer("ticket_caisse", TicketPojo.class);
+            AsyncMessageConsumer ecommerce_ticket = new AsyncMessageConsumer("ECOMMERCE_ticketCaisse", TicketPojo.class);
             Thread clientThread = new Thread(ecommerce_ticket);
             clientThread.start();
-            Logger.info("client message in queue {}", "CRM_client");
+            Logger.info("client message in queue {}", "ECOMMERCE_ticketCaisse");
 
         } catch (IOException | TimeoutException e) {
             e.printStackTrace();
@@ -72,10 +72,10 @@ public class Global extends GlobalSettings {
 
         /** Incident paiement venant de la Monetique**/
         try {
-            AsyncMessageConsumer incident_paiement = new AsyncMessageConsumer("INCIDENT_PAIEMENT", IncidentPojo.class);
+            AsyncMessageConsumer incident_paiement = new AsyncMessageConsumer("MONETARY_incidentPaiement", IncidentPojo.class);
             Thread incidentThread = new Thread(incident_paiement);
             incidentThread.start();
-            Logger.info("client message in queue {}", "INCIDENT_PAIEMENT");
+            Logger.info("client message in queue {}", "MONETARY_incidentPaiement");
 
         } catch (IOException | TimeoutException e) {
             e.printStackTrace();

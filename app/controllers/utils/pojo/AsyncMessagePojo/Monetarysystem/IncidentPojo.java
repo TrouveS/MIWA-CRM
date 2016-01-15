@@ -1,8 +1,7 @@
 package controllers.utils.pojo.AsyncMessagePojo.Monetarysystem;
 
 import controllers.utils.pojo.AsyncMessagePojo.AsyncMessagePojo;
-import controllers.utils.sender.AsyncMessageConsumer;
-import model.Clients;
+import model.Client;
 
 /**
  * Created by AmdouniNajla on 12/01/2016.
@@ -40,8 +39,8 @@ public class IncidentPojo extends AsyncMessagePojo {
     }
 
     public void action(){
-        Clients client;
-        client = Clients.find.where().eq("idFidelite", idfidelite).findUnique();
+        Client client;
+        client = Client.find.where().eq("idFidelite", idfidelite).findUnique();
         if(client != null)
         {
             client.setRating(client.getRating()-5);

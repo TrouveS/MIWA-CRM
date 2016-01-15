@@ -1,18 +1,18 @@
 package model;
 
 import play.db.ebean.Model;
-import java.util.List;
+
 import javax.persistence.*;
 /**
  * Created by AmdouniNajla on 08/01/2016.
  */
 @Entity
-public class Clients extends Model {
+public class Client extends Model {
 
 
-    public static Finder<Long, Clients> find = new Finder<>(Long.class, Clients.class);
+    public static Finder<Long, Client> find = new Finder<>(Long.class, Client.class);
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue()
     private Long clientId;
     @Column(nullable = false)
     private String nom;
@@ -24,7 +24,8 @@ public class Clients extends Model {
     private String sexe;
     @Column(nullable = false)
     private String date_naissance;
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue
+    @Column(nullable = true)
     private Long idfidelite;
     @Column(nullable = false)
     private String idRue;
@@ -47,7 +48,7 @@ public class Clients extends Model {
     @Column(nullable = true)
     private Integer nbIncidents;
 
-    public Clients() {
+    public Client() {
         for(int i = 0; i<4; i++)
         {
             Double rib_gen = 1000 + (Math.random() * (9999 - 1000));

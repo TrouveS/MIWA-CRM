@@ -6,7 +6,7 @@ import controllers.utils.pojo.AsyncMessagePojo.TicketPojo.TicketPojo;
 import controllers.utils.pojo.SyncMessagePojo.ClockPojo;
 import controllers.utils.sender.AsyncMessageConsumer;
 import controllers.utils.sender.SyncMessageSender;
-import model.Clients;
+import model.Client;
 import play.Application;
 import play.GlobalSettings;
 import play.Logger;
@@ -91,7 +91,7 @@ public class Global extends GlobalSettings {
     }
 
     private void createClients() {
-        Clients client1 = new Clients();
+        Client client1 = new Client();
         client1.setNom("Machiavelli");
         client1.setPrenom("Niccolo");
         client1.setEmail("n.machiavel@gmail.it");
@@ -107,7 +107,7 @@ public class Global extends GlobalSettings {
         client1.setIdFidelite(1450L);
         client1.save();
 
-        Clients client2 = new Clients();
+        Client client2 = new Client();
         client2.setNom("Alighieri");
         client2.setPrenom("Dante");
         client2.setEmail("d.alighieri@gmail.it");
@@ -123,7 +123,7 @@ public class Global extends GlobalSettings {
         client2.setIdFidelite(1410L);
         client2.save();
 
-        Clients client3 = new Clients();
+        Client client3 = new Client();
         client3.setNom("Borgia");
         client3.setPrenom("Cesare");
         client3.setEmail("cesare.il.grande@gmail.it");
@@ -139,7 +139,7 @@ public class Global extends GlobalSettings {
         client3.setIdFidelite(1540L);
         client3.save();
 
-        Clients client4 = new Clients();
+        Client client4 = new Client();
         client4.setNom("Da Vinci");
         client4.setPrenom("Leonardo");
         client4.setEmail("maestro.leo@gmail.it");
@@ -155,7 +155,7 @@ public class Global extends GlobalSettings {
         client4.setIdFidelite(1551L);
         client4.save();
 
-        Clients client5 = new Clients();
+        Client client5 = new Client();
         client5.setNom("Buonarotti");
         client5.setPrenom("Michelangelo");
         client5.setEmail("magico.miche@gmail.it");

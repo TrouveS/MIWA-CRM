@@ -1,7 +1,6 @@
 package controllers.utils.pojo.SyncMessagePojo.Monetarysystem;
 
 import controllers.utils.pojo.AsyncMessagePojo.AsyncMessagePojo;
-import model.Clients;
 
 /**
  * Created by AmdouniNajla on 12/01/2016.

@@ -3,7 +3,7 @@
 
 # --- !Ups
 
-create table clients (
+create table client (
   client_id                 bigint not null,
   nom                       varchar(255) not null,
   prenom                    varchar(255) not null,
@@ -21,37 +21,32 @@ create table clients (
   rib                       varchar(255),
   rating                    integer,
   nb_incidents              integer,
-  constraint uq_clients_email unique (email),
-  constraint uq_clients_rib unique (rib),
-  constraint pk_clients primary key (client_id))
+  constraint uq_client_email unique (email),
+  constraint uq_client_rib unique (rib),
+  constraint pk_client primary key (client_id))
 ;
 
-create table user (
-  user_id                   bigint not null,
-  login                     varchar(255) not null,
-  password                  varchar(255) not null,
-  constraint uq_user_login unique (login),
-  constraint pk_user primary key (user_id))
+create table promotion (
+  promotion_id              bigint not null,
+  client_id                 bigint not null,
+  remise                    integer not null,
+  constraint pk_promotion primary key (promotion_id))
 ;
 
-create sequence clients_seq;
+create sequence client_seq;
 
-create sequence user_seq;
+create sequence promotion_seq;
 
 
 
 
 # --- !Downs
 
-SET REFERENTIAL_INTEGRITY FALSE;
+drop table if exists client cascade;
 
-drop table if exists clients;
+drop table if exists promotion cascade;
 
-drop table if exists user;
+drop sequence if exists client_seq;
 
-SET REFERENTIAL_INTEGRITY TRUE;
-
-drop sequence if exists clients_seq;
-
-drop sequence if exists user_seq;
+drop sequence if exists promotion_seq;
 

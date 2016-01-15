@@ -1,15 +1,15 @@
-package model;
+package controllers.utils.pojo.AsyncMessagePojo.TicketPojo;
 
 /**
  * Created by LuxiaMars on 12/01/2016.
  */
-public class Article {
+public class ArticlePojo {
 
     private Long article_id;
     private Float price;
     private Integer quantity;
 
-    public Article(Long article_id, Float price, Integer quantity) {
+    public ArticlePojo(Long article_id, Float price, Integer quantity) {
         this.article_id = article_id;
         this.price = price;
         this.quantity = quantity;

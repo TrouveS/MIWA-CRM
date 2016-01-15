@@ -2,11 +2,9 @@ package controllers.utils.pojo.AsyncMessagePojo.TicketPojo;
 
 import controllers.utils.pojo.AsyncMessagePojo.AsyncMessagePojo;
 import controllers.utils.sender.AsyncMessageProducer;
-import model.Article;
-import model.Clients;
+import model.Client;
 import play.Logger;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.TimeoutException;
 
@@ -22,7 +20,7 @@ public class TicketPojo extends AsyncMessagePojo {
     private Long idFidelite;
     private String date;
     private Float total;
-    private List<Article> articles;
+    private List<ArticlePojo> articles;
 
     public TicketPojo(){}
 
@@ -82,11 +80,11 @@ public class TicketPojo extends AsyncMessagePojo {
         this.total = total;
     }
 
-    public List<Article> getArticles() {
+    public List<ArticlePojo> getArticles() {
         return articles;
     }
 
-    public void setArticles(List<Article> articles) {
+    public void setArticles(List<ArticlePojo> articles) {
         this.articles = articles;
     }
 
@@ -94,7 +92,7 @@ public class TicketPojo extends AsyncMessagePojo {
     public void action()
     {
         TicketPojo ticket =  new TicketPojo();
-        Clients client = Clients.find.where().eq("idFidelite", idFidelite).findUnique();
+        Client client = Client.find.where().eq("idFidelite", idFidelite).findUnique();
         if(client != null) {
             client.setRating(client.getRating() + 1);
             client.save();

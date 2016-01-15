@@ -5,7 +5,7 @@ import controllers.MonetaryController.Rating;
 import controllers.clientManagement.ClientList;
 import controllers.utils.pojo.AsyncMessagePojo.AsyncMessagePojo;
 import controllers.utils.sender.AsyncMessageProducer;
-import model.Clients;
+import model.Client;
 import play.Logger;
 
 import java.io.IOException;
@@ -130,7 +130,7 @@ public class ClientMessagePojo extends AsyncMessagePojo{
 
     @Override
     public void action() throws UnirestException {
-        Clients newClient = new Clients();
+        Client newClient = new Client();
         ClientMessagePojo client = new ClientMessagePojo();
         ClientList cl = new ClientList();
 
@@ -139,11 +139,11 @@ public class ClientMessagePojo extends AsyncMessagePojo{
         String emailClient;
         emailClient = this.email;
 
-        Clients email = Clients.find.where().eq("email", emailClient).findUnique();
+        Client email = Client.find.where().eq("email", emailClient).findUnique();
 
         if(email != null)
         {
-            Clients existingClient = email;
+            Client existingClient = email;
             client.nom = existingClient.getNom();
             client.prenom = existingClient.getPrenom();
             client.client_id_local =  this.client_id_local;

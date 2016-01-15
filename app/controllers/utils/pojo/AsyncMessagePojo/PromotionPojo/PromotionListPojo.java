@@ -1,7 +1,7 @@
 package controllers.utils.pojo.AsyncMessagePojo.PromotionPojo;
 
-import controllers.clientManagement.PromotionList;
 import controllers.utils.pojo.AsyncMessagePojo.AsyncMessagePojo;
+import model.Promotion;
 
 import java.util.List;
 
@@ -10,9 +10,25 @@ import java.util.List;
  */
 public class PromotionListPojo extends AsyncMessagePojo {
 
-    private PromotionList pl;
-    private List<PromotionPojo> promotionPojoList = pl.getPromotionList();
+    private List<PromotionPojo> promotionClient;
 
-    public void action(){}
+    public PromotionListPojo(List<PromotionPojo> promotionClient) {
+        this.promotionClient = promotionClient;
+    }
+
+    public PromotionListPojo() {
+    }
+
+    public List<PromotionPojo> getPromotionClient() {
+        return promotionClient;
+    }
+
+    public void setPromotionClient(List<PromotionPojo> promotionClient) {
+        this.promotionClient = promotionClient;
+    }
+
+    public void action() {
+
+    }
 
 }

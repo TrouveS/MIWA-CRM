@@ -13,8 +13,8 @@ GET         /CRM/RISK/$idClient<[0-9]+>          controllers.MonetaryController.
 
 
 #BACKOFFICE AND SITEWEB
-POST        /BACKOFFICE/SENDCLIENTS              controllers.clientManagement.ClientList.sendModificationClient()
-POST        /BACKOFFICE/PROMOTION                controllers.clientManagement.PromotionList.sendPromotionList()
+POST        /BACKOFFICE/SENDCLIENTS              controllers.clientManagement.ClientController.sendClientList()
+POST        /BACKOFFICE/PROMOTION                controllers.clientManagement.PromotionController.sendPromotionList()
 
 
 # Map static resources from the /public folder to the /assets URL path

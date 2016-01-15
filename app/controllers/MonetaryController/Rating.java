@@ -26,13 +26,13 @@ public class Rating extends Controller{
 
     /** Carte de la société venant de la Monetique  - Message synchrone**/
     public static Result getCarte(Long idFidelite) throws UnirestException {
-        Client client = Client.find.where().eq("idFidelite", idFidelite).findUnique();
+        Client client = Client.find.where().eq("clientId", idFidelite).findUnique();
 
-        if (client != null)
-        {
+        if (client == null)
+            return badRequest();
             Service service = Service.getInstances();
             CartePojo pojo = new CartePojo();
-            pojo.setIdfidelite(client.getIdFidelite());
+            pojo.setIdfidelite(client.getClientId());
             pojo.setRIB(client.getRib());
             pojo.setTypedemande(client.getTypedemande());
 
@@ -47,20 +47,17 @@ public class Rating extends Controller{
             client.save();
 
             return ok();
-        }
-        else
-            return badRequest();
 
     }
 
 
     /** Envoie du Rating à la  Monetique - Message synchrone**/
     public static Result sendRating(Long idFidelite) {
-        Client client = Client.find.where().eq("idFidelite", idFidelite).findUnique();
+        Client client = Client.find.where().eq("clientId", idFidelite).findUnique();
 
         if (client != null) {
             RatingPojo pojo = new RatingPojo();
-            pojo.setIdfidelite(client.getIdFidelite());
+            pojo.setIdfidelite(client.getClientId());
             pojo.setRating(client.getRating());
             return ok(Json.toJson(pojo));
         }
@@ -72,11 +69,11 @@ public class Rating extends Controller{
     /** Envoie du Risque à la Monetique - Message synchrone **/
 
     public static Result sendRisk(Long idFidelite) {
-        Client client = Client.find.where().eq("idFidelite", idFidelite).findUnique();
+        Client client = Client.find.where().eq("clientId", idFidelite).findUnique();
 
         if (client != null) {
             RiskPojo pojo = new RiskPojo();
-            pojo.setIdfidelite(client.getIdFidelite());
+            pojo.setIdfidelite(client.getClientId());
             pojo.setRisque(client.getRating());
             return ok(Json.toJson(pojo));
         }

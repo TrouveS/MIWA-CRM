@@ -1,9 +1,9 @@
 package controllers.clientManagement;
 
-import controllers.utils.pojo.AsyncMessagePojo.ClientMessagePojo.ClientMessagePojo;
 import controllers.utils.pojo.AsyncMessagePojo.PromotionPojo.PromotionListPojo;
 import controllers.utils.pojo.AsyncMessagePojo.PromotionPojo.PromotionPojo;
 import controllers.utils.sender.AsyncMessageProducer;
+import model.Promotion;
 import play.Logger;
 import play.mvc.Result;
 
@@ -17,31 +17,17 @@ import static play.mvc.Results.ok;
 /**
  * Created by LuxiaMars on 11/01/2016.
  */
-public class PromotionList {
-
-    private static List<PromotionPojo> promotionList = new ArrayList<>();
-
-    public PromotionList() {
-    }
-
-    public List<PromotionPojo> getPromotionList() {
-        return promotionList;
-    }
-
-    private static void cleanPromotionList() {
-        promotionList.clear();
-    }
-
-    public void addToPromotiontList(PromotionPojo promotion) {
-        promotionList.add(promotion);
-    }
+public class PromotionController {
 
     public static Result sendPromotionList() {
-        PromotionListPojo promotionListPojo = new PromotionListPojo();
+        List<PromotionPojo> promotionListPojos = new ArrayList<>();
+        for (Promotion promotion: Promotion.find.all())
+            promotionListPojos.add(new PromotionPojo(promotion.getClientId(), promotion.getRemise()));
+
+        PromotionListPojo promotionListPojo = new PromotionListPojo(promotionListPojos);
         try {
             AsyncMessageProducer crm_promotion_bo_list = new AsyncMessageProducer("CRM_promotion");
             crm_promotion_bo_list.sendMessage(promotionListPojo);
-            cleanPromotionList();
             Logger.info("client message in queue {}", "CRM_promotion");
 
         } catch (IOException | TimeoutException e) {
@@ -49,4 +35,5 @@ public class PromotionList {
         }
         return ok();
     }
+
 }

@@ -1,6 +1,7 @@
 import com.mashape.unirest.http.exceptions.UnirestException;
 import controllers.utils.Service;
-import controllers.utils.pojo.AsyncMessagePojo.ClientMessagePojo.ClientMessagePojo;
+import controllers.utils.pojo.AsyncMessagePojo.ClientPojo.ClientPojo;
+import controllers.utils.pojo.AsyncMessagePojo.Magasin.ListeMagasinPojo;
 import controllers.utils.pojo.AsyncMessagePojo.Monetarysystem.IncidentPojo;
 import controllers.utils.pojo.AsyncMessagePojo.TicketPojo.TicketPojo;
 import controllers.utils.pojo.SyncMessagePojo.ClockPojo;
@@ -12,6 +13,7 @@ import play.GlobalSettings;
 import play.Logger;
 
 import java.io.IOException;
+import java.util.Date;
 import java.util.concurrent.TimeoutException;
 
 public class Global extends GlobalSettings {
@@ -41,7 +43,7 @@ public class Global extends GlobalSettings {
     private void subscribeQueue() {
         /** Information nouveau client venant du BackOffice **/
         try {
-            AsyncMessageConsumer crm_client = new AsyncMessageConsumer("BO_client", ClientMessagePojo.class);
+            AsyncMessageConsumer crm_client = new AsyncMessageConsumer("BO_client", ClientPojo.class);
             Thread clientThread = new Thread(crm_client);
             clientThread.start();
             Logger.info("client message in queue {}", "BO_client");
@@ -80,6 +82,16 @@ public class Global extends GlobalSettings {
         } catch (IOException | TimeoutException e) {
             e.printStackTrace();
         }
+        /** Liste des magasins référentiel**/
+        try {
+            AsyncMessageConsumer listeMagasin = new AsyncMessageConsumer("PC_listeMagasin", ListeMagasinPojo.class);
+            Thread incidentThread = new Thread(listeMagasin);
+            incidentThread.start();
+            Logger.info("client message in queue {}", "PC_listeMagasin");
+
+        } catch (IOException | TimeoutException e) {
+            e.printStackTrace();
+        }
     }
 
     private void saveService() {
@@ -96,15 +108,15 @@ public class Global extends GlobalSettings {
         client1.setPrenom("Niccolo");
         client1.setEmail("n.machiavel@gmail.it");
         client1.setSexe("H");
-        client1.setDate("23/03/1500");
+        client1.setDate_naissance(new Date());
         client1.setIdRue("Via il Principe");
         client1.setIdVille("Firenze");
         client1.setIdCodePostal("FI234");
-        client1.setMagasin("SPESA2000");
+        client1.setMagasinId("SPESA2000");
+        client1.setClient_id_local(100L);
         client1.setNbIncidents(0);
         client1.setCredit(500);
         client1.save();
-        client1.setIdFidelite(1450L);
         client1.save();
 
         Client client2 = new Client();
@@ -112,15 +124,15 @@ public class Global extends GlobalSettings {
         client2.setPrenom("Dante");
         client2.setEmail("d.alighieri@gmail.it");
         client2.setSexe("H");
-        client2.setDate("23/03/1410");
+        client2.setDate_naissance(new Date());
         client2.setIdRue("Via Inferno");
         client2.setIdVille("Firenze");
         client2.setIdCodePostal("FI232");
-        client2.setMagasin("SPESA2000");
+        client2.setMagasinId("SPESA2000");
+        client2.setClient_id_local(100L);
         client2.setNbIncidents(0);
         client2.setCredit(500);
         client2.save();
-        client2.setIdFidelite(1410L);
         client2.save();
 
         Client client3 = new Client();
@@ -128,15 +140,15 @@ public class Global extends GlobalSettings {
         client3.setPrenom("Cesare");
         client3.setEmail("cesare.il.grande@gmail.it");
         client3.setSexe("H");
-        client3.setDate("23/12/1540");
+        client3.setDate_naissance(new Date());
         client3.setIdRue("Via Imperatore");
         client3.setIdVille("Roma");
         client3.setIdCodePostal("RO590");
-        client3.setMagasin("SPESA2000");
+        client3.setMagasinId("SPESA2000");
+        client3.setClient_id_local(100L);
         client3.setNbIncidents(0);
         client3.setCredit(1000);
         client3.save();
-        client3.setIdFidelite(1540L);
         client3.save();
 
         Client client4 = new Client();
@@ -144,15 +156,15 @@ public class Global extends GlobalSettings {
         client4.setPrenom("Leonardo");
         client4.setEmail("maestro.leo@gmail.it");
         client4.setSexe("H");
-        client4.setDate("14/03/1510");
+        client4.setDate_naissance(new Date());
         client4.setIdRue("Via Mona Lisa");
         client4.setIdVille("Venezia");
         client4.setIdCodePostal("VE442");
-        client4.setMagasin("SPESA2000");
+        client4.setMagasinId("SPESA2000");
+        client4.setClient_id_local(100L);
         client4.setNbIncidents(0);
         client4.setCredit(530);
         client4.save();
-        client4.setIdFidelite(1551L);
         client4.save();
 
         Client client5 = new Client();
@@ -160,15 +172,15 @@ public class Global extends GlobalSettings {
         client5.setPrenom("Michelangelo");
         client5.setEmail("magico.miche@gmail.it");
         client5.setSexe("H");
-        client5.setDate("17/03/1490");
+        client5.setDate_naissance(new Date());
         client5.setIdRue("Via Davide");
         client5.setIdVille("Roma");
         client5.setIdCodePostal("RO662");
-        client5.setMagasin("SPESA2000");
+        client5.setMagasinId("SPESA2000");
+        client5.setClient_id_local(100L);
         client5.setNbIncidents(0);
         client5.setCredit(200);
         client5.save();
-        client5.setIdFidelite(1490L);
         client5.save();
     }
 }

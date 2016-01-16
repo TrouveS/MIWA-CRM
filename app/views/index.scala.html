@@ -1,7 +1,48 @@
-@(message: String)
+@import model.Client
+@import java.util.List
 
-@main("Welcome to miwa") {
+@(title: String, clients: List[Client])
 
-    coucou sigl
-
+@main(title) {
+    <div class="col-md-12">
+        <form action="getCarte" method="post">
+            <table id="client_table" class="display" cellspacing="0" width="100%" >
+                <thead>
+                    <tr>
+                        <th>IDFidelite</th>
+                        <th>Nom</th>
+                        <th>Prenom</th>
+                        <th>Email</th>
+                        <th>Sexe</th>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                @for(client <- clients) {
+                    <tr>
+                        <th>@client.getClientId</th>
+                        <th>@client.getNom</th>
+                        <th>@client.getPrenom</th>
+                        <th>@client.getEmail</th>
+                        <th>@client.getSexe</th>
+                        <th>
+                            <input type="hidden" id="idfidelite" name="idfidelite" value=@client.getClientId>
+                            <select id="typedemande" name="typedemande">
+                                <option value="immediat">Immediat</option>
+                                <option value="differe">Differe</option>
+                            </select>
+                        </th>
+                        <th><button type="submit">Demander carte de fidelite</button></th>
+                    </tr>
+                }
+                </tbody>
+            </table>
+        </form>
+    </div>
+    <script>
+        $(document).ready(function() {
+    $('#client_table').DataTable();
+} );
+    </script>
 }

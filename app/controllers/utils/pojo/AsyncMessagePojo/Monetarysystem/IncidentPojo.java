@@ -11,6 +11,15 @@ public class IncidentPojo extends AsyncMessagePojo {
     private int valeur_incident;
     private String erreur;
 
+    public IncidentPojo() {
+    }
+
+    public IncidentPojo(Long idfidelite, int valeur_incident, String erreur) {
+        this.idfidelite = idfidelite;
+        this.valeur_incident = valeur_incident;
+        this.erreur = erreur;
+    }
+
     public Long getIdfidelite() {
         return idfidelite;
     }
@@ -33,9 +42,6 @@ public class IncidentPojo extends AsyncMessagePojo {
 
     public void setErreur(String erreur) {
         this.erreur = erreur;
-    }
-
-    public IncidentPojo() {
     }
 
     public void action(){

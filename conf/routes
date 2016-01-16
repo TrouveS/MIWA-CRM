@@ -8,7 +8,7 @@ GET         /                                    controllers.Application.index
 #MONETARYSYSTEM
 GET         /CRM/RATING/$idClient<[0-9]+>        controllers.MonetaryController.Rating.sendRating(idClient: Long)
 GET         /CRM/RISK/$idClient<[0-9]+>          controllers.MonetaryController.Rating.sendRisk(idClient: Long)
-#POST        /MONETARYSYSTEM/CARTE           controllers.MonetaryController.Rating.getCarte()
+POST        /getCarte                             controllers.MonetaryController.Rating.getCarte()
 
 
 

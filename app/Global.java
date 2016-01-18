@@ -25,7 +25,8 @@ public class Global extends GlobalSettings {
         saveService();
         addCallback();
         subscribeQueue();
-        createClients();
+        if (Client.find.all().size() == 0)
+            createClients();
         super.onStart(application);
 
     }

@@ -25,7 +25,7 @@ public class Global extends GlobalSettings {
         saveService();
         addCallback();
         subscribeQueue();
-        createClients();
+        //createClients();
         super.onStart(application);
 
     }
@@ -91,7 +91,7 @@ public class Global extends GlobalSettings {
         }
     }
 
-    private void createClients() {
+    /**private void createClients() {
         Client client1 = new Client();
         client1.setNom("Machiavelli");
         client1.setPrenom("Niccolo");
@@ -171,5 +171,6 @@ public class Global extends GlobalSettings {
         client5.setCredit(200);
         client5.save();
         client5.save();
-    }
+
+    }**/
 }

@@ -41,7 +41,7 @@ public class Rating extends Controller{
             pojo.setTypedemande(typedemande);
 
             client.update();
-            HttpResponse<com.mashape.unirest.http.JsonNode> jsonResponse = Unirest.post(service.getServiceHttpURL(ServiceName.MONETARY_SYSTEM) + "/CARTE")
+            HttpResponse<com.mashape.unirest.http.JsonNode> jsonResponse = Unirest.post(service.getServiceHttpURL(ServiceName.MONETARY_SYSTEM) + "/CRM/CARTE")
                     .header("Content-type", "application/json")
                     .header("accept", "application/json")
                     .body(Json.toJson(pojo).toString())

@@ -83,6 +83,7 @@ public class Client extends Model {
         Double rib_gen = 1000 + (Math.random() * (9999 - 1000));
         Integer rib_body = rib_gen.intValue();
         rib = rib_body.toString() + "-";
+        
         for (int i = 1; i < 4; i++) {
             rib_gen = 1000 + (Math.random() * (9999 - 1000));
             rib_body = rib_gen.intValue();

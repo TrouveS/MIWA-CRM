@@ -80,9 +80,12 @@ public class Client extends Model {
     }
 
     public Client() {
-        for (int i = 0; i < 4; i++) {
-            Double rib_gen = 1000 + (Math.random() * (9999 - 1000));
-            Integer rib_body = rib_gen.intValue();
+        Double rib_gen = 1000 + (Math.random() * (9999 - 1000));
+        Integer rib_body = rib_gen.intValue();
+        rib = rib_body.toString() + "-";
+        for (int i = 1; i < 4; i++) {
+            rib_gen = 1000 + (Math.random() * (9999 - 1000));
+            rib_body = rib_gen.intValue();
             rib = rib + rib_body.toString() + "-";
         }
         Double cle_gen = 10 + (Math.random() * (99 - 10));

@@ -44,7 +44,7 @@ public class Rating extends Controller{
             HttpResponse<com.mashape.unirest.http.JsonNode> jsonResponse = Unirest.post(service.getServiceHttpURL(ServiceName.MONETARY_SYSTEM) + "/MONETARYSYSTEM/RATING")
                     .header("Content-type", "application/json")
                     .header("accept", "application/json")
-                    .body(Json.toJson(client).toString())
+                    .body(Json.toJson(pojo).toString())
                     .asJson();
 
             ReponseCartePojo reponse = Json.fromJson(Json.parse(jsonResponse.getRawBody()), ReponseCartePojo.class);

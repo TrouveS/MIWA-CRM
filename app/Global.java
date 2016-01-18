@@ -25,7 +25,8 @@ public class Global extends GlobalSettings {
         saveService();
         addCallback();
         subscribeQueue();
-        //createClients();
+        if (Client.find.all().size() == 0)
+            createClients();
         super.onStart(application);
 
     }
@@ -91,7 +92,7 @@ public class Global extends GlobalSettings {
         }
     }
 
-    /**private void createClients() {
+    private void createClients() {
         Client client1 = new Client();
         client1.setNom("Machiavelli");
         client1.setPrenom("Niccolo");
@@ -101,7 +102,7 @@ public class Global extends GlobalSettings {
         client1.setIdRue("Via il Principe");
         client1.setIdVille("Firenze");
         client1.setIdCodePostal("FI234");
-        client1.setMagasinId("SPESA2000");
+        client1.setMagasinId("paris");
         client1.setClient_id_local(100L);
         client1.setNbIncidents(0);
         client1.setCredit(500);
@@ -117,7 +118,7 @@ public class Global extends GlobalSettings {
         client2.setIdRue("Via Inferno");
         client2.setIdVille("Firenze");
         client2.setIdCodePostal("FI232");
-        client2.setMagasinId("SPESA2000");
+        client2.setMagasinId("paris");
         client2.setClient_id_local(100L);
         client2.setNbIncidents(0);
         client2.setCredit(500);
@@ -131,9 +132,9 @@ public class Global extends GlobalSettings {
         client3.setSexe("H");
         client3.setDate_naissance(new Date());
         client3.setIdRue("Via Imperatore");
-        client3.setIdVille("Roma");
+        client3.setIdVille("Paris");
         client3.setIdCodePostal("RO590");
-        client3.setMagasinId("SPESA2000");
+        client3.setMagasinId("paris");
         client3.setClient_id_local(100L);
         client3.setNbIncidents(0);
         client3.setCredit(1000);
@@ -147,9 +148,9 @@ public class Global extends GlobalSettings {
         client4.setSexe("H");
         client4.setDate_naissance(new Date());
         client4.setIdRue("Via Mona Lisa");
-        client4.setIdVille("Venezia");
+        client4.setIdVille("Paris");
         client4.setIdCodePostal("VE442");
-        client4.setMagasinId("SPESA2000");
+        client4.setMagasinId("paris");
         client4.setClient_id_local(100L);
         client4.setNbIncidents(0);
         client4.setCredit(530);
@@ -163,14 +164,14 @@ public class Global extends GlobalSettings {
         client5.setSexe("H");
         client5.setDate_naissance(new Date());
         client5.setIdRue("Via Davide");
-        client5.setIdVille("Roma");
+        client5.setIdVille("Paris");
         client5.setIdCodePostal("RO662");
-        client5.setMagasinId("SPESA2000");
+        client5.setMagasinId("paris");
         client5.setClient_id_local(100L);
         client5.setNbIncidents(0);
         client5.setCredit(200);
         client5.save();
         client5.save();
 
-    }**/
+    }
 }

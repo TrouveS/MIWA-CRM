@@ -137,7 +137,7 @@ public class ClientPojo extends AsyncMessagePojo {
             client.save();
         }
 
-        System.out.println("Nouveau client créé : " + client.getClientId());
+        System.out.println("Nouveau client cree : " + client.getClientId());
 
         try {
             AsyncMessageProducer crm_client_fidelise = new AsyncMessageProducer("CRM_client");

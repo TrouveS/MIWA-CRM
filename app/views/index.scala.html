@@ -4,8 +4,7 @@
 @(title: String, clients: List[Client])
 
 @main(title) {
-    <div class="col-md-12">
-        <form action="getCarte" method="post">
+    <div class="col-md-12" >
             <table id="client_table" class="display" cellspacing="0" width="100%" >
                 <thead>
                     <tr>
@@ -20,6 +19,7 @@
                 </thead>
                 <tbody>
                 @for(client <- clients) {
+                    <form action="getCarte" method="post">
                     <tr>
                         <th>@client.getClientId</th>
                         <th>@client.getNom</th>
@@ -35,10 +35,10 @@
                         </th>
                         <th><button type="submit">Demander carte de fidelite</button></th>
                     </tr>
+                    </form>
                 }
                 </tbody>
             </table>
-        </form>
     </div>
     <script>
         $(document).ready(function() {

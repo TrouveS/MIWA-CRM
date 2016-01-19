@@ -35,6 +35,23 @@ public class ClientController {
         } catch (IOException | TimeoutException e) {
             e.printStackTrace();
         }
+
+
+        List<Client> list_client = Client.find.where().eq("magasin_id", "paris").findList();
+        List<ClientFidelisePojo> clientFidelisePojoParisList = new ArrayList<>();
+        for(Client client: list_client)
+            clientFidelisePojoParisList.add(ClientFidelisePojo.loadFromModel(client));
+
+        ClientFideliseListPojo clientFideliseListParisPojo = new ClientFideliseListPojo(clientFidelisePojoParisList);
+
+        try {
+            AsyncMessageProducer crm_client_list = new AsyncMessageProducer("CRM_client");
+            crm_client_list.sendMessage(clientFideliseListParisPojo);
+            Logger.info("client message in queue {}", "CRM_client");
+
+        } catch (IOException | TimeoutException e) {
+            e.printStackTrace();
+        }
         return ok();
     }
 }

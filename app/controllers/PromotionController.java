@@ -20,6 +20,7 @@ import static play.mvc.Results.ok;
 public class PromotionController {
 
     public static Result sendPromotionList() {
+        Logger.info("Envoi promotion");
         List<PromotionPojo> promotionListPojos = new ArrayList<>();
         for (Promotion promotion: Promotion.find.all())
             promotionListPojos.add(new PromotionPojo(promotion.getClientId(), promotion.getRemise()));

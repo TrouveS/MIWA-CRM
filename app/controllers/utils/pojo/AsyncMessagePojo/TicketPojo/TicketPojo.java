@@ -14,11 +14,10 @@ import java.util.concurrent.TimeoutException;
 public class TicketPojo extends AsyncMessagePojo {
 
     private Long client_id;
-    private String ticket_id;
+    private int ticket_id;
     private String magasin_id;
     private String ticket_date;
     private Long idFidelite;
-    private String date;
     private Float total;
     private List<ArticlePojo> articles;
 
@@ -32,11 +31,11 @@ public class TicketPojo extends AsyncMessagePojo {
         this.client_id = client_id;
     }
 
-    public String getTicket_id() {
+    public int getTicket_id() {
         return ticket_id;
     }
 
-    public void setTicket_id(String ticket_id) {
+    public void setTicket_id(int ticket_id) {
         this.ticket_id = ticket_id;
     }
 
@@ -62,14 +61,6 @@ public class TicketPojo extends AsyncMessagePojo {
 
     public void setIdFidelite(Long idFidelite) {
         this.idFidelite = idFidelite;
-    }
-
-    public String getDate() {
-        return date;
-    }
-
-    public void setDate(String date) {
-        this.date = date;
     }
 
     public Float getTotal() {

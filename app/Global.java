@@ -102,7 +102,7 @@ public class Global extends GlobalSettings {
         client1.setDate_naissance(new Date());
         client1.setIdRue("Via il Principe");
         client1.setIdVille("Firenze");
-        client1.setIdCodePostal("FI234");
+        client1.setIdCodePostal("12345");
         client1.setMagasinId("paris");
         client1.setClient_id_local(-1L);
         client1.setNbIncidents(0);

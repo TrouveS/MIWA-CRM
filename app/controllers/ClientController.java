@@ -1,4 +1,4 @@
-package controllers.clientManagement;
+package controllers;
 
 import controllers.utils.pojo.AsyncMessagePojo.ClientPojo.ClientFidelisePojo;
 import controllers.utils.pojo.AsyncMessagePojo.ClientPojo.ClientFideliseListPojo;

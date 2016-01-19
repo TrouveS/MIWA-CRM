@@ -3,21 +3,21 @@
 # ~~~~
 
 # Home page
-GET         /                                    controllers.Application.index
+GET         /                                               controllers.Application.index
 
 #MONETARYSYSTEM
-GET         /CRM/RATING/$idClient<[0-9]+>        controllers.MonetaryController.Rating.sendRating(idClient: Long)
-GET         /CRM/RISK/$idClient<[0-9]+>          controllers.MonetaryController.Rating.sendRisk(idClient: Long)
-POST        /getCarte                             controllers.MonetaryController.Rating.getCarte()
+GET         /CRM/RATING/$idClient<[0-9]+>                   controllers.RatingController.sendRating(idClient: Long)
+GET         /CRM/RISK/$idClient<[0-9]+>                     controllers.RatingController.sendRisk(idClient: Long)
+GET         /getCarte/$idClient<[0-9]+>/:typeDemande/        controllers.RatingController.getCarte(idClient: Long, typeDemande: String)
 
 
 
 #BACKOFFICE AND SITEWEB
-POST        /BACKOFFICE/SENDCLIENTS              controllers.clientManagement.ClientController.sendClientList()
-POST        /BACKOFFICE/PROMOTION                controllers.clientManagement.PromotionController.sendPromotionList()
+POST        /BACKOFFICE/SENDCLIENTS                         controllers.ClientController.sendClientList()
+POST        /BACKOFFICE/PROMOTION                           controllers.PromotionController.sendPromotionList()
 
 
 # Map static resources from the /public folder to the /assets URL path
-GET         /assets/*file                        controllers.Assets.at(path="/public", file)
+GET         /assets/*file                                   controllers.Assets.at(path="/public", file)
 
     

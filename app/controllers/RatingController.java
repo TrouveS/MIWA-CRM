@@ -1,4 +1,4 @@
-package controllers.MonetaryController;
+package controllers;
 
 import com.mashape.unirest.http.HttpResponse;
 import com.mashape.unirest.http.Unirest;
@@ -22,31 +22,28 @@ import play.mvc.Result;
 /**
  * Created by AmdouniNajla on 12/01/2016.
  */
-public class Rating extends Controller{
+public class RatingController extends Controller{
 
     /** Carte de la société venant de la Monetique  - Message synchrone**/
-    public static Result getCarte() throws UnirestException {
+    public static Result getCarte(Long idClient, String typeDemande) throws UnirestException {
 
-        DynamicForm requestData = form().bindFromRequest();
-        Long idfidelite = Long.valueOf(requestData.get("idfidelite"));
-        Client client = Client.find.where().eq("clientId", idfidelite).findUnique();
+        Client client = Client.find.where().eq("clientId", idClient).findUnique();
 
         Logger.info("TEST DE LID: Demande de creation carte [" + "\n"
-                + "Client : " + idfidelite);
+                + "Client : " + idClient);
 
         if (client != null)
         {
-            String typedemande = requestData.get("typedemande");
 
             Service service = Service.getInstances();
             CartePojo pojo = new CartePojo();
             pojo.setIdfidelite(client.getClientId());
             pojo.setRIB(client.getRib());
-            pojo.setTypedemande(typedemande);
+            pojo.setTypedemande(typeDemande);
 
             Logger.info("CRMC: Demande de creation carte [" + "\n"
                     + "Client : " + client.getClientId() + "\n"
-                    + "Type de demande : " + typedemande + "\n"
+                    + "Type de demande : " + typeDemande + "\n"
                     + "RIB : " + client.getRib() + "]\n");
 
             client.update();

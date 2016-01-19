@@ -1,4 +1,4 @@
-package controllers.clientManagement;
+package controllers;
 
 import controllers.utils.pojo.AsyncMessagePojo.PromotionPojo.PromotionListPojo;
 import controllers.utils.pojo.AsyncMessagePojo.PromotionPojo.PromotionPojo;

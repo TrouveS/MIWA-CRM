@@ -129,11 +129,15 @@ public class ClientPojo extends AsyncMessagePojo {
     @Override
     public void action() throws UnirestException {
 
+        System.out.println("Reception d'une demande de creation d'un nouveau client");
+
         Client client;
         if ((client = Client.find.where().eq("email", this.email).findUnique()) == null) {
             client = new Client(this.email, this.nom, this.prenom, this.sexe, this.date_de_naissance, this.client_id_local, this.idRue, this.idVille, this.idCodePostal, this.magasin_id);
             client.save();
         }
+
+        System.out.println("Nouveau client créé : " + client.getClientId());
 
         try {
             AsyncMessageProducer crm_client_fidelise = new AsyncMessageProducer("CRM_client");

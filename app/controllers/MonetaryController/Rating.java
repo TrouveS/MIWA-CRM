@@ -36,7 +36,7 @@ public class Rating extends Controller{
 
             Service service = Service.getInstances();
             CartePojo pojo = new CartePojo();
-            pojo.setIdfidelite(idfidelite);
+            pojo.setIdfidelite(client.getClientId);
             pojo.setRIB(client.getRib());
             pojo.setTypedemande(typedemande);
 

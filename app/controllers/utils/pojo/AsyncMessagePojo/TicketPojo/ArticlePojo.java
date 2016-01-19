@@ -5,21 +5,21 @@ package controllers.utils.pojo.AsyncMessagePojo.TicketPojo;
  */
 public class ArticlePojo {
 
-    private Long article_id;
+    private String article_id;
     private Float price;
     private Integer quantity;
 
-    public ArticlePojo(Long article_id, Float price, Integer quantity) {
+    public ArticlePojo(String article_id, Float price, Integer quantity) {
         this.article_id = article_id;
         this.price = price;
         this.quantity = quantity;
     }
 
-    public Long getArticle_id() {
+    public String getArticle_id() {
         return article_id;
     }
 
-    public void setArticle_id(Long article_id) {
+    public void setArticle_id(String article_id) {
         this.article_id = article_id;
     }
 

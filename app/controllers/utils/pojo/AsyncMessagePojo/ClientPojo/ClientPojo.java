@@ -138,7 +138,7 @@ public class ClientPojo extends AsyncMessagePojo {
             System.out.println("Nouveau client cree : " + client.getClientId());
         }
 
-        if (client.getClient_id_local() == null) {
+        if (client.getClient_id_local() == null || client.getClient_id_local() < 0) {
             client.setClient_id_local(this.client_id_local);
             client.save();
         }

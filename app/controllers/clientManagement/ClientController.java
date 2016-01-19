@@ -20,6 +20,7 @@ import static play.mvc.Results.ok;
 public class ClientController {
 
     public static Result sendClientList() {
+        Logger.info("Call back de la clock");
         List<ClientFidelisePojo> clientFidelisePojoList = new ArrayList<>();
         for(Client client: Client.find.all())
             clientFidelisePojoList.add(ClientFidelisePojo.loadFromModel(client));

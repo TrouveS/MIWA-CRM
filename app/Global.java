@@ -1,5 +1,6 @@
 import com.mashape.unirest.http.exceptions.UnirestException;
 import controllers.utils.Service;
+import controllers.utils.ServiceName;
 import controllers.utils.pojo.AsyncMessagePojo.ClientPojo.ClientPojo;
 import controllers.utils.pojo.AsyncMessagePojo.Monetarysystem.IncidentPojo;
 import controllers.utils.pojo.AsyncMessagePojo.TicketPojo.TicketPojo;
@@ -33,8 +34,8 @@ public class Global extends GlobalSettings {
 
     private void addCallback() {
         try {
-            SyncMessageSender.addCallbackOnMainService(" 0 0 0 * * *", "/BACKOFFICE/SENDCLIENTS", "newDay", Service.SERVICE_NAME, ClockPojo.RequestType.GET);
-            SyncMessageSender.addCallbackOnMainService(" 0 0 0 * * *", "/BACKOFFICE/PROMOTION", "newDay", Service.SERVICE_NAME, ClockPojo.RequestType.GET);
+            SyncMessageSender.addCallbackOnMainService(" 0 0 0 * * *", "/BACKOFFICE/SENDCLIENTS", "newDay", ServiceName.CRM, ClockPojo.RequestType.POST);
+            SyncMessageSender.addCallbackOnMainService(" 0 0 0 * * *", "/BACKOFFICE/PROMOTION", "newDay", ServiceName.CRM, ClockPojo.RequestType.POST);
         } catch (UnirestException e) {
             e.printStackTrace();
         }

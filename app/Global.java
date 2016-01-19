@@ -35,7 +35,7 @@ public class Global extends GlobalSettings {
     private void addCallback() {
         try {
             SyncMessageSender.addCallbackOnMainService(" 0 0 0 * * *", "/BACKOFFICE/SENDCLIENTS", "newDay", ServiceName.CRM, ClockPojo.RequestType.POST);
-            SyncMessageSender.addCallbackOnMainService(" 0 0 0 * * *", "/BACKOFFICE/PROMOTION", "newDay", ServiceName.CRM, ClockPojo.RequestType.POST);
+            SyncMessageSender.addCallbackOnMainService(" 1 0 0 * * *", "/BACKOFFICE/PROMOTION", "newDay", ServiceName.CRM, ClockPojo.RequestType.POST);
         } catch (UnirestException e) {
             e.printStackTrace();
         }

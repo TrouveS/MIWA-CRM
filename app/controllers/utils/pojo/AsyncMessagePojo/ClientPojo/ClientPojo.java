@@ -135,9 +135,8 @@ public class ClientPojo extends AsyncMessagePojo {
         if ((client = Client.find.where().eq("email", this.email).findUnique()) == null) {
             client = new Client(this.email, this.nom, this.prenom, this.sexe, this.date_de_naissance, this.client_id_local, this.idRue, this.idVille, this.idCodePostal, this.magasin_id);
             client.save();
+            System.out.println("Nouveau client cree : " + client.getClientId());
         }
-
-        System.out.println("Nouveau client cree : " + client.getClientId());
 
         try {
             AsyncMessageProducer crm_client_fidelise = new AsyncMessageProducer("CRM_client");

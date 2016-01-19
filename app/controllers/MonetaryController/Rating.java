@@ -31,6 +31,9 @@ public class Rating extends Controller{
         Long idfidelite = Long.valueOf(requestData.get("idfidelite"));
         Client client = Client.find.where().eq("clientId", idfidelite).findUnique();
 
+        Logger.info("TEST DE LID: Demande de creation carte [" + "\n"
+                + "Client : " + idfidelite);
+
         if (client != null)
         {
             String typedemande = requestData.get("typedemande");

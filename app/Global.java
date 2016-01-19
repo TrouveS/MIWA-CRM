@@ -116,7 +116,7 @@ public class Global extends GlobalSettings {
         client2.setDate_naissance(new Date());
         client2.setIdRue("Via Inferno");
         client2.setIdVille("Firenze");
-        client2.setIdCodePostal("FI232");
+        client2.setIdCodePostal("11232");
         client2.setMagasinId("paris");
         client2.setClient_id_local(-1L);
         client2.setNbIncidents(0);
@@ -130,7 +130,7 @@ public class Global extends GlobalSettings {
         client3.setDate_naissance(new Date());
         client3.setIdRue("Via Imperatore");
         client3.setIdVille("Paris");
-        client3.setIdCodePostal("RO590");
+        client3.setIdCodePostal("11590");
         client3.setMagasinId("paris");
         client3.setClient_id_local(-1L);
         client3.setNbIncidents(0);
@@ -144,7 +144,7 @@ public class Global extends GlobalSettings {
         client4.setDate_naissance(new Date());
         client4.setIdRue("Via Mona Lisa");
         client4.setIdVille("Paris");
-        client4.setIdCodePostal("VE442");
+        client4.setIdCodePostal("11442");
         client4.setMagasinId("paris");
         client4.setClient_id_local(-1L);
         client4.setNbIncidents(0);
@@ -158,7 +158,7 @@ public class Global extends GlobalSettings {
         client5.setDate_naissance(new Date());
         client5.setIdRue("Via Davide");
         client5.setIdVille("Paris");
-        client5.setIdCodePostal("RO662");
+        client5.setIdCodePostal("11662");
         client5.setMagasinId("paris");
         client5.setClient_id_local(-1L);
         client5.setNbIncidents(0);

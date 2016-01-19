@@ -1,5 +1,6 @@
 package controllers;
 
+import controllers.utils.Service;
 import controllers.utils.pojo.AsyncMessagePojo.ClientPojo.ClientFidelisePojo;
 import controllers.utils.pojo.AsyncMessagePojo.ClientPojo.ClientFideliseListPojo;
 import controllers.utils.sender.AsyncMessageProducer;
@@ -45,9 +46,9 @@ public class ClientController {
         ClientFideliseListPojo clientFideliseListParisPojo = new ClientFideliseListPojo(clientFidelisePojoParisList);
 
         try {
-            AsyncMessageProducer crm_client_list = new AsyncMessageProducer("CRM_client");
+            AsyncMessageProducer crm_client_list = new AsyncMessageProducer("CRM_client_paris");
             crm_client_list.sendMessage(clientFideliseListParisPojo);
-            Logger.info("client message in queue {}", "CRM_client");
+            Logger.info("client message in queue {}", "CRM_client_paris");
 
         } catch (IOException | TimeoutException e) {
             e.printStackTrace();

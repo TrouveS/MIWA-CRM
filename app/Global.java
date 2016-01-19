@@ -104,10 +104,8 @@ public class Global extends GlobalSettings {
         client1.setIdVille("Firenze");
         client1.setIdCodePostal("FI234");
         client1.setMagasinId("paris");
-        client1.setClient_id_local(100L);
+        client1.setClient_id_local(-1L);
         client1.setNbIncidents(0);
-        client1.setCredit(500);
-        client1.save();
         client1.save();
 
         Client client2 = new Client();
@@ -120,10 +118,8 @@ public class Global extends GlobalSettings {
         client2.setIdVille("Firenze");
         client2.setIdCodePostal("FI232");
         client2.setMagasinId("paris");
-        client2.setClient_id_local(100L);
+        client2.setClient_id_local(-1L);
         client2.setNbIncidents(0);
-        client2.setCredit(0);
-        client2.save();
         client2.save();
 
         Client client3 = new Client();
@@ -136,10 +132,8 @@ public class Global extends GlobalSettings {
         client3.setIdVille("Paris");
         client3.setIdCodePostal("RO590");
         client3.setMagasinId("paris");
-        client3.setClient_id_local(100L);
+        client3.setClient_id_local(-1L);
         client3.setNbIncidents(0);
-        client3.setCredit(0);
-        client3.save();
         client3.save();
 
         Client client4 = new Client();
@@ -152,10 +146,8 @@ public class Global extends GlobalSettings {
         client4.setIdVille("Paris");
         client4.setIdCodePostal("VE442");
         client4.setMagasinId("paris");
-        client4.setClient_id_local(100L);
+        client4.setClient_id_local(-1L);
         client4.setNbIncidents(0);
-        client4.setCredit(0);
-        client4.save();
         client4.save();
 
         Client client5 = new Client();
@@ -168,10 +160,8 @@ public class Global extends GlobalSettings {
         client5.setIdVille("Paris");
         client5.setIdCodePostal("RO662");
         client5.setMagasinId("paris");
-        client5.setClient_id_local(100L);
+        client5.setClient_id_local(-1L);
         client5.setNbIncidents(0);
-        client5.setCredit(0);
-        client5.save();
         client5.save();
 
     }

@@ -12,6 +12,7 @@ import controllers.utils.pojo.SyncMessagePojo.Monetarysystem.RatingPojo;
 import controllers.utils.pojo.SyncMessagePojo.Monetarysystem.ReponseCartePojo;
 import controllers.utils.pojo.SyncMessagePojo.Monetarysystem.RiskPojo;
 import model.Client;
+import play.Logger;
 import play.data.DynamicForm;
 import play.libs.Json;
 import play.mvc.Controller;
@@ -36,9 +37,14 @@ public class Rating extends Controller{
 
             Service service = Service.getInstances();
             CartePojo pojo = new CartePojo();
-            pojo.setIdfidelite(idfidelite);
+            pojo.setIdfidelite(client.getClientId());
             pojo.setRIB(client.getRib());
             pojo.setTypedemande(typedemande);
+
+            Logger.info("CRMC: Demande de creation carte [" + "\n"
+                    + "Client : " + client.getClientId() + "\n"
+                    + "Type de demande : " + typedemande + "\n"
+                    + "RIB : " + client.getRib() + "]\n");
 
             client.update();
             HttpResponse<com.mashape.unirest.http.JsonNode> jsonResponse = Unirest.post(service.getServiceHttpURL(ServiceName.MONETARY_SYSTEM) + "/CRM/CARTE")

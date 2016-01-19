@@ -122,7 +122,7 @@ public class Global extends GlobalSettings {
         client2.setMagasinId("paris");
         client2.setClient_id_local(100L);
         client2.setNbIncidents(0);
-        client2.setCredit(500);
+        client2.setCredit(0);
         client2.save();
         client2.save();
 
@@ -138,7 +138,7 @@ public class Global extends GlobalSettings {
         client3.setMagasinId("paris");
         client3.setClient_id_local(100L);
         client3.setNbIncidents(0);
-        client3.setCredit(1000);
+        client3.setCredit(0);
         client3.save();
         client3.save();
 
@@ -154,7 +154,7 @@ public class Global extends GlobalSettings {
         client4.setMagasinId("paris");
         client4.setClient_id_local(100L);
         client4.setNbIncidents(0);
-        client4.setCredit(530);
+        client4.setCredit(0);
         client4.save();
         client4.save();
 
@@ -170,7 +170,7 @@ public class Global extends GlobalSettings {
         client5.setMagasinId("paris");
         client5.setClient_id_local(100L);
         client5.setNbIncidents(0);
-        client5.setCredit(200);
+        client5.setCredit(0);
         client5.save();
         client5.save();
 

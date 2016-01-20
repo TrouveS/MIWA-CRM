@@ -42,3 +42,4 @@ public class ArticlePojo {
         this.quantity = quantity;
     }
 }
+

@@ -67,13 +67,13 @@ public class RatingController extends Controller{
 
     /** Envoie du Rating à la  Monetique - Message synchrone**/
     public static Result sendRating(Long idFidelite) {
-        Client client = Client.find.where().eq("idFidelite", idFidelite).findUnique();
+        Client client = Client.find.where().eq("clientId", idFidelite).findUnique();
 
         Logger.info(" CRMController : Demande de rating [" + "\n" +
                 "Client_recu: " + idFidelite + "\n" +
                 "Client : " + client.getClientId() + "\n" +
                 "Rating : " + client.getRating() + "\n]");
-        
+
         if (client != null) {
             RatingPojo pojo = new RatingPojo();
             pojo.setIdfidelite(client.getClientId());
@@ -88,7 +88,7 @@ public class RatingController extends Controller{
     /** Envoie du Risque à la Monetique - Message synchrone **/
 
     public static Result sendRisk(Long idFidelite) {
-        Client client = Client.find.where().eq("idFidelite", idFidelite).findUnique();
+        Client client = Client.find.where().eq("clientId", idFidelite).findUnique();
 
         if (client != null) {
             RiskPojo pojo = new RiskPojo();

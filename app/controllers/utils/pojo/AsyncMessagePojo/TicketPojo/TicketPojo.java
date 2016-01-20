@@ -103,7 +103,7 @@ public class TicketPojo extends AsyncMessagePojo {
             client.update();
         }
 
-        ticket.client_id = this.client_id;
+        ticket.client_id = this.idFidelite;
         ticket.ticket_id = this.ticket_id;
         ticket.magasin_id = this.magasin_id;
         ticket.ticket_date = this.ticket_date;

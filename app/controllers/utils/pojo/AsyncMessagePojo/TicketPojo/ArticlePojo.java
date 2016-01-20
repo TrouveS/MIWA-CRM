@@ -15,6 +15,9 @@ public class ArticlePojo {
         this.quantity = quantity;
     }
 
+    public ArticlePojo() {
+    }
+
     public String getArticle_id() {
         return article_id;
     }

@@ -21,6 +21,16 @@ public class TicketPojo extends AsyncMessagePojo {
     private Float total;
     private List<ArticlePojo> articles;
 
+    public TicketPojo(Long client_id, int ticket_id, String magasin_id, String ticket_date, Long idFidelite, Float total, List<ArticlePojo> articles) {
+        this.client_id = client_id;
+        this.ticket_id = ticket_id;
+        this.magasin_id = magasin_id;
+        this.ticket_date = ticket_date;
+        this.idFidelite = idFidelite;
+        this.total = total;
+        this.articles = articles;
+    }
+
     public TicketPojo(){}
 
     public Long getClient_id() {
@@ -86,7 +96,7 @@ public class TicketPojo extends AsyncMessagePojo {
 
         TicketPojo ticket =  new TicketPojo();
         Client client = Client.find.where().eq("client_id", idFidelite).findUnique();
-        if(client != null) {
+        if (client != null) {
             System.out.println("Mise a jour du rating");
             System.out.println("Client id : " + client.getClientId());
             client.setRating(client.getRating() + 1);

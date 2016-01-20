@@ -69,6 +69,11 @@ public class RatingController extends Controller{
     public static Result sendRating(Long idFidelite) {
         Client client = Client.find.where().eq("idFidelite", idFidelite).findUnique();
 
+        Logger.info(" CRMController : Demande de rating [" + "\n" +
+                "Client_recu: " + idFidelite + "\n" +
+                "Client : " + client.getClientId() + "\n" +
+                "Rating : " + client.getRating() + "\n]");
+        
         if (client != null) {
             RatingPojo pojo = new RatingPojo();
             pojo.setIdfidelite(client.getClientId());

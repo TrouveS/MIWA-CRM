@@ -145,7 +145,7 @@ public class ClientPojo extends AsyncMessagePojo {
         }
 
         try {
-            AsyncMessageProducer crm_client_fidelise = new AsyncMessageProducer("CRM_client");
+            AsyncMessageProducer crm_client_fidelise = new AsyncMessageProducer("CRM_client_" + this.getMagasin_id());
             crm_client_fidelise.sendMessage(ClientFidelisePojo.loadFromModel(client));
             Logger.info("client message in queue {}", "CRM_client");
         } catch (IOException | TimeoutException e) {

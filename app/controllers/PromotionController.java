@@ -50,6 +50,8 @@ public class PromotionController {
         } catch (IOException | TimeoutException e) {
             e.printStackTrace();
         }
+
+        //TODO send for each magasin
         return ok();
     }
 

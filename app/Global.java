@@ -22,7 +22,6 @@ public class Global extends GlobalSettings {
     public void onStart(Application application) {
         if (application.isDev())
             Logger.info("start in dev mode");
-        //TODO on start action
         saveService();
         addCallback();
         subscribeQueue();

@@ -1,10 +1,10 @@
 package controllers;
 
-import controllers.utils.Service;
-import controllers.utils.pojo.AsyncMessagePojo.ClientPojo.ClientFidelisePojo;
 import controllers.utils.pojo.AsyncMessagePojo.ClientPojo.ClientFideliseListPojo;
+import controllers.utils.pojo.AsyncMessagePojo.ClientPojo.ClientFidelisePojo;
 import controllers.utils.sender.AsyncMessageProducer;
 import model.Client;
+import model.Magasin;
 import play.Logger;
 import play.mvc.Result;
 
@@ -23,10 +23,10 @@ public class ClientController {
     public static Result sendClientList() {
         Logger.info("Call back de la clock");
         List<ClientFidelisePojo> clientFidelisePojoList = new ArrayList<>();
-        for(Client client: Client.find.all())
+        for (Client client : Client.find.all())
             clientFidelisePojoList.add(ClientFidelisePojo.loadFromModel(client));
 
-            ClientFideliseListPojo clientFideliseListPojo = new ClientFideliseListPojo(clientFidelisePojoList);
+        ClientFideliseListPojo clientFideliseListPojo = new ClientFideliseListPojo(clientFidelisePojoList);
 
         try {
             AsyncMessageProducer crm_client_list = new AsyncMessageProducer("CRM_clientList");
@@ -37,21 +37,24 @@ public class ClientController {
             e.printStackTrace();
         }
 
+        List<Magasin> magasins;
+        //Todo select list magasin
+        for (Magasin magasin : magasins) {
+            List<Client> list_client = Client.find.where().eq("magasin_id", magasin.getId_magasin()).findList();
+            List<ClientFidelisePojo> clientFidelisePojoParisList = new ArrayList<>();
+            for (Client client : list_client)
+                clientFidelisePojoParisList.add(ClientFidelisePojo.loadFromModel(client));
 
-        List<Client> list_client = Client.find.where().eq("magasin_id", "paris").findList();
-        List<ClientFidelisePojo> clientFidelisePojoParisList = new ArrayList<>();
-        for(Client client: list_client)
-            clientFidelisePojoParisList.add(ClientFidelisePojo.loadFromModel(client));
+            ClientFideliseListPojo clientFideliseListParisPojo = new ClientFideliseListPojo(clientFidelisePojoParisList);
 
-        ClientFideliseListPojo clientFideliseListParisPojo = new ClientFideliseListPojo(clientFidelisePojoParisList);
+            try {
+                AsyncMessageProducer crm_client_list = new AsyncMessageProducer("CRM_clientList_" + magasin.getId_magasin());
+                crm_client_list.sendMessage(clientFideliseListParisPojo);
+                Logger.info("client message in queue {}", "CRM_client_" + magasin.getId_magasin());
 
-        try {
-            AsyncMessageProducer crm_client_list = new AsyncMessageProducer("CRM_client_paris");
-            crm_client_list.sendMessage(clientFideliseListParisPojo);
-            Logger.info("client message in queue {}", "CRM_client_paris");
-
-        } catch (IOException | TimeoutException e) {
-            e.printStackTrace();
+            } catch (IOException | TimeoutException e) {
+                e.printStackTrace();
+            }
         }
         return ok();
     }

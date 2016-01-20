@@ -82,11 +82,15 @@ public class TicketPojo extends AsyncMessagePojo {
     @Override
     public void action()
     {
+        System.out.println("reception d'un ticket de caisse");
+
         TicketPojo ticket =  new TicketPojo();
         Client client = Client.find.where().eq("client_id", idFidelite).findUnique();
         if(client != null) {
+            System.out.println("Mise a jour du rating");
+            System.out.println("Client id : " + client.getClientId());
             client.setRating(client.getRating() + 1);
-            client.save();
+            client.update();
         }
 
         ticket.client_id = this.client_id;
@@ -98,6 +102,7 @@ public class TicketPojo extends AsyncMessagePojo {
         ticket.articles = this.articles;
 
         try {
+            System.out.println("Envoi du ticket de caisse a la BI");
             AsyncMessageProducer bi_ticket = new AsyncMessageProducer("CRM_ticketCaisse");
             bi_ticket.sendMessage(ticket);
             Logger.info("client message in queue {}", "CRM_ticketCaisse");

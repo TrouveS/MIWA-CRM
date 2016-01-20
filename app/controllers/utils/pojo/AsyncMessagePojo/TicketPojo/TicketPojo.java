@@ -82,7 +82,7 @@ public class TicketPojo extends AsyncMessagePojo {
     @Override
     public void action()
     {
-        System.out.println("reception d'un ticket de caisse");
+        System.out.println("reception d'un ticket de caisse. Client id = " + idFidelite);
 
         TicketPojo ticket =  new TicketPojo();
         Client client = Client.find.where().eq("client_id", idFidelite).findUnique();

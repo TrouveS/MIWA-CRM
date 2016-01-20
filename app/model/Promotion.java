@@ -1,8 +1,11 @@
 package model;
 
+import controllers.utils.pojo.AsyncMessagePojo.PromotionPojo.PromotionPojo;
 import play.db.ebean.Model;
 
 import javax.persistence.*;
+import java.util.List;
+
 /**
  * Created by AmdouniNajla on 08/01/2016.
  */
@@ -18,15 +21,15 @@ public class Promotion extends Model{
     @Column(nullable = false)
     private Long clientId;
     @Column(nullable = false)
-    private int Remise;
+    private int remise;
 
 
-    public Promotion(){
+    public Promotion() {
     }
 
     public Promotion(Long clientId, int remise) {
         this.clientId = clientId;
-        this.Remise = remise;
+        this.remise = remise;
     }
 
     public Long getPromotionId() {
@@ -46,10 +49,10 @@ public class Promotion extends Model{
     }
 
     public int getRemise() {
-        return Remise;
+        return remise;
     }
 
     public void setRemise(int remise) {
-        Remise = remise;
+        this.remise = remise;
     }
 }

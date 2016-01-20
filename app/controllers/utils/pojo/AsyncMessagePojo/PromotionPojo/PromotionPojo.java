@@ -1,5 +1,9 @@
 package controllers.utils.pojo.AsyncMessagePojo.PromotionPojo;
 
+import model.Client;
+import model.Promotion;
+import java.util.List;
+
 /**
  * Created by LuxiaMars on 12/01/2016.
  */

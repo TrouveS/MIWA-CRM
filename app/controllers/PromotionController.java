@@ -3,6 +3,7 @@ package controllers;
 import controllers.utils.pojo.AsyncMessagePojo.PromotionPojo.PromotionListPojo;
 import controllers.utils.pojo.AsyncMessagePojo.PromotionPojo.PromotionPojo;
 import controllers.utils.sender.AsyncMessageProducer;
+import model.Client;
 import model.Promotion;
 import play.Logger;
 import play.mvc.Result;
@@ -21,7 +22,22 @@ public class PromotionController {
 
     public static Result sendPromotionList() {
         Logger.info("Envoi promotion");
+        List<Client> clients;
+        clients = Client.find.orderBy("rating desc").findPagingList(2).getPage(0).getList();
+
+        for (int i = 0; i < 2; i++) {
+            Promotion promotion = new Promotion();
+            /** Selection client aleatoire**/
+            promotion.setClientId(clients.get(i).getClientId());
+            /** Selection promotion aleatoire **/
+            Integer size = Promotion.montantPromotion.length;
+            Integer randomNum = 0 + (int) (Math.random() * (size - 1));
+            promotion.setRemise(Promotion.montantPromotion[randomNum]);
+            promotion.save();
+        }
+
         List<PromotionPojo> promotionListPojos = new ArrayList<>();
+
         for (Promotion promotion: Promotion.find.all())
             promotionListPojos.add(new PromotionPojo(promotion.getClientId(), promotion.getRemise()));
 

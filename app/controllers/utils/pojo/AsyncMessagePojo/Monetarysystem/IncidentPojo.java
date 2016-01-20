@@ -46,7 +46,7 @@ public class IncidentPojo extends AsyncMessagePojo {
 
     public void action(){
         Client client;
-        client = Client.find.where().eq("id_client", id_client).findUnique();
+        client = Client.find.where().eq("client_id", id_client).findUnique();
         if(client != null)
         {
             client.setRating(client.getRating()- 5);

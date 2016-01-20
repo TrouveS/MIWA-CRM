@@ -141,6 +141,7 @@ public class ClientPojo extends AsyncMessagePojo {
         if (client.getClient_id_local() == null || client.getClient_id_local() < 0) {
             client.setClient_id_local(this.client_id_local);
             client.save();
+            System.out.println("Mise a jour du client avec l'id magasin local : " + this.client_id_local);
         }
 
         try {

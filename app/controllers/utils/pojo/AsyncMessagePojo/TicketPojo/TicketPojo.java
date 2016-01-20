@@ -83,7 +83,7 @@ public class TicketPojo extends AsyncMessagePojo {
     public void action()
     {
         TicketPojo ticket =  new TicketPojo();
-        Client client = Client.find.where().eq("idFidelite", idFidelite).findUnique();
+        Client client = Client.find.where().eq("client_id", client_id).findUnique();
         if(client != null) {
             client.setRating(client.getRating() + 1);
             client.save();
@@ -96,8 +96,6 @@ public class TicketPojo extends AsyncMessagePojo {
         ticket.idFidelite = this.idFidelite;
         ticket.total = this.total;
         ticket.articles = this.articles;
-
-
 
         try {
             AsyncMessageProducer bi_ticket = new AsyncMessageProducer("CRM_ticketCaisse");

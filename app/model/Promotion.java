@@ -26,7 +26,7 @@ public class Promotion extends Model{
 
     public Promotion(Long clientId, int remise) {
         this.clientId = clientId;
-        Remise = remise;
+        this.Remise = remise;
     }
 
     public Long getPromotionId() {

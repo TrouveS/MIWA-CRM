@@ -31,6 +31,7 @@ create table magasin (
   id_magasin                varchar(255) not null,
   nom_magasin               varchar(255) not null,
   adresse_magasin           varchar(255) not null,
+  constraint uq_magasin_id_magasin unique (id_magasin),
   constraint pk_magasin primary key (magasin_id))
 ;
 

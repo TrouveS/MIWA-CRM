@@ -14,7 +14,7 @@ public class Magasin extends Model {
     @Id
     @GeneratedValue
     private Long magasin_id;
-    @Column(nullable = false)
+    @Column(nullable = false, unique = true)
     private String id_magasin;
     @Column(nullable = false)
     private String nom_magasin;

@@ -26,6 +26,14 @@ create table client (
   constraint pk_client primary key (client_id))
 ;
 
+create table magasin (
+  magasin_id                bigint not null,
+  id_magasin                varchar(255) not null,
+  nom_magasin               varchar(255) not null,
+  adresse_magasin           varchar(255) not null,
+  constraint pk_magasin primary key (magasin_id))
+;
+
 create table promotion (
   promotion_id              bigint not null,
   client_id                 bigint not null,
@@ -34,6 +42,8 @@ create table promotion (
 ;
 
 create sequence client_seq;
+
+create sequence magasin_seq;
 
 create sequence promotion_seq;
 
@@ -46,11 +56,15 @@ SET REFERENTIAL_INTEGRITY FALSE;
 
 drop table if exists client;
 
+drop table if exists magasin;
+
 drop table if exists promotion;
 
 SET REFERENTIAL_INTEGRITY TRUE;
 
 drop sequence if exists client_seq;
+
+drop sequence if exists magasin_seq;
 
 drop sequence if exists promotion_seq;
 

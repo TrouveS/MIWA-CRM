@@ -2,6 +2,7 @@ import com.mashape.unirest.http.exceptions.UnirestException;
 import controllers.utils.Service;
 import controllers.utils.ServiceName;
 import controllers.utils.pojo.AsyncMessagePojo.ClientPojo.ClientPojo;
+import controllers.utils.pojo.AsyncMessagePojo.MagasinPojo.MagasinListPojo;
 import controllers.utils.pojo.AsyncMessagePojo.Monetarysystem.IncidentPojo;
 import controllers.utils.pojo.AsyncMessagePojo.TicketPojo.TicketPojo;
 import controllers.utils.pojo.SyncMessagePojo.ClockPojo;
@@ -78,6 +79,17 @@ public class Global extends GlobalSettings {
             Thread incidentThread = new Thread(incident_paiement);
             incidentThread.start();
             Logger.info("client message in queue {}", "MONETARY_incidentPaiement");
+
+        } catch (IOException | TimeoutException e) {
+            e.printStackTrace();
+        }
+
+        /** Liste des magasins venant de la ProductCatalog**/
+        try {
+            AsyncMessageConsumer liste_magasins = new AsyncMessageConsumer("PC_listeMagasin_CRM", MagasinListPojo.class);
+            Thread listeMagasinThread = new Thread(liste_magasins);
+            listeMagasinThread.start();
+            Logger.info("client message in queue {}", "PC_listeMagasin_CRM");
 
         } catch (IOException | TimeoutException e) {
             e.printStackTrace();

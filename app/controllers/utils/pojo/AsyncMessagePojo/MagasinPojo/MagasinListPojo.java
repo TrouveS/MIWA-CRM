@@ -32,7 +32,11 @@ public class MagasinListPojo extends AsyncMessagePojo {
 
         for (MagasinPojo store : liste_magasin)
         {
-            //TODO: save magasin
+            Magasin magasin = new Magasin();
+            magasin.setId_magasin(store.getId_magasin());
+            magasin.setNom_magasin(store.getNom_magasin());
+            magasin.setAdresse_magasin(store.getAdresse_magasin());
+            magasin.save();
         }
     }
 }

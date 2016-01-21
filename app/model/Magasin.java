@@ -10,6 +10,7 @@ import javax.persistence.Id;
 @Entity
 public class Magasin extends Model {
 
+    public static Finder<Long, Magasin> find = new Finder<>(Long.class, Magasin.class);
     @Id
     @GeneratedValue
     private Long magasin_id;

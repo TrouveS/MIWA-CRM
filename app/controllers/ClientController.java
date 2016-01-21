@@ -39,7 +39,7 @@ public class ClientController {
 
         List<Magasin> magasins;
         //Todo select list magasin
-        for (Magasin magasin : magasins) {
+        for (Magasin magasin : Magasin.find.all()) {
             List<Client> list_client = Client.find.where().eq("magasin_id", magasin.getId_magasin()).findList();
             List<ClientFidelisePojo> clientFidelisePojoParisList = new ArrayList<>();
             for (Client client : list_client)
